@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin-dashboard.layout.master')
 
 @push('plugin-styles')
 @endpush
@@ -26,7 +26,7 @@
           <h4 class="card-title mb-0">Sales Performance</h4>
           <div id="line-traffic-legend"></div>
         </div>
-        <div class="row"> 
+        <div class="row">
           <div class="col-md-4">
             <h2 class="mb-0 font-weight-medium">$5,341</h2>
             <p class="mb-5 text-muted">Sales</p>

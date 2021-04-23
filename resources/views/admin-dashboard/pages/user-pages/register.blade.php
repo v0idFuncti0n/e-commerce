@@ -1,4 +1,4 @@
-@extends('layout.master-mini')
+@extends('admin-dashboard.layout.master-mini')
 
 @section('content')
 <div class="content-wrapper d-flex align-items-center justify-content-center auth theme-one" style="background-image: url({{ url('assets/images/auth/register.jpg') }}); background-size: cover;">

@@ -96,12 +96,6 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            @role('admin')
-                                <x-jet-dropdown-link href="{{ route('admin.dashboard') }}">
-                                    {{ __('Admin Dashboard') }}
-                                </x-jet-dropdown-link>
-                            @endrole
-
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>

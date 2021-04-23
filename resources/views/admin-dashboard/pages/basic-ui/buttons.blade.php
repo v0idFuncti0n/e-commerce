@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('admin-dashboard.layout.master')
 @section('content')
 
 <div class="row">
