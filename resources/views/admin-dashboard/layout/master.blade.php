@@ -19,7 +19,7 @@
   @stack('plugin-styles')
 
   <!-- common css -->
-  {!! Html::style('css/app.css') !!}
+  {!! Html::style('css/admin-dashboard.css') !!}
   <!-- end common css -->
 
   @stack('style')
@@ -40,7 +40,7 @@
   </div>
 
   <!-- base js -->
-  {!! Html::script('js/app.js') !!}
+  {!! Html::script('js/admin-dashboard.js') !!}
   {!! Html::script('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
   <!-- end base js -->
 

@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- CSRF Token -->
   <meta name="_token" content="{{ csrf_token() }}">
-  
+
   <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
   <!-- plugin css -->
@@ -21,7 +21,7 @@
   <!-- end plugin css -->
 
   <!-- common css -->
-  {!! Html::style('css/app.css') !!}
+  {!! Html::style('css/admin-dashboard.css') !!}
   <!-- end common css -->
 
   @stack('style')
@@ -35,7 +35,7 @@
   </div>
 
     <!-- base js -->
-    {!! Html::script('js/app.js') !!}
+    {!! Html::script('js/admin-dashboard.js') !!}
     <!-- end base js -->
 
     <!-- plugin js -->
