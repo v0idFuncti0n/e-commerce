@@ -23,6 +23,7 @@
 <!-- common css -->
 {!! Html::style('css/admin-dashboard.css') !!}
 {!! Html::style('/css/toastr.css') !!}
+{!! Html::style('/css/sweetalert2.min.css') !!}
 <!-- end common css -->
 
     @stack('style')
@@ -46,11 +47,20 @@
 {!! Html::script('js/admin-dashboard.js') !!}
 {!! Html::script('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
 {!! Html::script('assets/js/toastr.min.js') !!}
+{!! Html::script('assets/js/sweetalert2.min.js') !!}
+
 <!-- end base js -->
 
 {{--notification handler--}}
 
 <script>
+    toastr.options.progressBar = true;
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error('{{ $error }}');
+        @endforeach
+    @endif
+
     @if(session()->has('message'))
     let type = '{{ session()->get('alert-type', 'info') }}';
     switch (type) {
@@ -90,9 +100,5 @@
 </body>
 {!! Html::script('assets/js/jquery-3.3.1.js') !!}
 {!! Html::script('assets/js/datatables.js') !!}
-
-
-
-
 <!-- end used js -->
 </html>

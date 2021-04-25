@@ -43,6 +43,8 @@ Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'a
     // categories routes
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
+    Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
 
     // default template routes
     Route::group(['prefix' => 'basic-ui'], function () {
@@ -314,9 +316,9 @@ Route::get('/clear-cache', function () {
 });
 
 // 404 for undefined routes
-Route::any('/{page?}', function () {
+/*Route::any('/{page?}', function () {
     return View::make('pages.error-pages.error-404');
-})->where('page', '.*');
+})->where('page', '.*');*/
 
 
 

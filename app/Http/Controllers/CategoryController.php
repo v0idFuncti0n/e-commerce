@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin-dashboard.category');
+        return view('admin-dashboard.category',['categories' => Category::all()]);
     }
 
     public function store(Request $request)
@@ -24,6 +24,31 @@ class CategoryController extends Controller
 
         $notification = array(
             'message' => 'Category has been added successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function delete($id){
+        Category::destroy($id);
+
+        $notification = array(
+            'message' => 'Category has been deleted successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function update(Request $request, $id){
+
+        $category = Category::find($id);
+        $category->name = $request->category_name;
+        $category->save();
+
+        $notification = array(
+            'message' => 'Category has been updated successfully',
             'alert-type' => 'success'
         );
 
