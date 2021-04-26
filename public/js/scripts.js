@@ -24,16 +24,19 @@ $('.btn-delete').on('click', function (event) {
 
 //modal new category
 $('#add-category-modal').on('show.bs.modal', function () {
-    $('#add-category-modal input[name="category_name"]').trigger('focus');
+
     let submit_button = document.getElementById('add-submit-button');
+
     submit_button.addEventListener('click', function () {
         document.getElementById('add-submit-form').submit();
     });
+}).on('shown.bs.modal', function (){
+    $('#add-category-modal input[name="category_name"]').trigger('focus');
 })
 
 //modal edit category
 $('#edit-category-modal').on('show.bs.modal', function (event) {
-    $('#edit-category-modal input[name="category_name"]').trigger('focus');
+
 
     let button = $(event.relatedTarget);
     let category_id = button.data('category_id');
@@ -53,7 +56,10 @@ $('#edit-category-modal').on('show.bs.modal', function (event) {
         replaceRouteAction('edit-submit-form', category_id);
         form.submit();
     });
-})
+}).on('shown.bs.modal', function (){
+    $('#edit-category-modal input[name="category_name"]').trigger('focus');
+});
+
 function replaceRouteAction(formName, id){
     let form = document.getElementById(formName);
     form.action = form.action.replace(':id', id);
