@@ -41,7 +41,11 @@ class CategoryController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    /** @noinspection PhpUndefinedMethodInspection */
     public function update(Request $request, $id){
+        $request->validate([
+            'category_name' => 'required|unique:categories,name|max:255'
+        ]);
 
         $category = Category::find($id);
         $category->name = $request->category_name;

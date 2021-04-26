@@ -1,6 +1,8 @@
 //datatable initialize
 $(document).ready(function () {
-    $('#datatable').DataTable();
+    $('#datatable').DataTable({
+        "pagingType": "full_numbers"
+    });
 });
 
 //delete button
@@ -31,7 +33,7 @@ $('#add-category-modal').on('show.bs.modal', function () {
 
 //modal edit category
 $('#edit-category-modal').on('show.bs.modal', function (event) {
-    //$('#edit-category-modal input[name="category_name"]').trigger('focus');
+    $('#edit-category-modal input[name="category_name"]').trigger('focus');
 
     let button = $(event.relatedTarget);
     let category_id = button.data('category_id');
@@ -40,12 +42,20 @@ $('#edit-category-modal').on('show.bs.modal', function (event) {
     let modal = $(this)
     modal.find('.modal-body #edit-submit-form input[name="category_name"]').val(category_name);
 
+    let form = document.getElementById('edit-submit-form');
     let submit_button = document.getElementById('edit-submit-button');
+
+    form.addEventListener('submit', function (){
+        replaceRouteAction('edit-submit-form', category_id);
+    });
+
     submit_button.addEventListener('click', function () {
-        let form = document.getElementById('edit-submit-form');
-        form.action = form.action.replace(':id', category_id);
+        replaceRouteAction('edit-submit-form', category_id);
         form.submit();
     });
 })
-
+function replaceRouteAction(formName, id){
+    let form = document.getElementById(formName);
+    form.action = form.action.replace(':id', id);
+}
 
