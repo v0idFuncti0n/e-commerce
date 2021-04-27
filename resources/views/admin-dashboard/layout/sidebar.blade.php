@@ -47,11 +47,23 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item {{ active_class(['admin/categories']) }}">
-            <a class="nav-link" href="{{ route('admin.categories') }}">
+        <li class="nav-item {{ active_class(['admin/categories/*']) }}">
+            <a class="nav-link" data-toggle="collapse" href="#categories"
+               aria-expanded="{{ is_active_route(['admin/categories/*']) }}" aria-controls="categories">
                 <i class="menu-icon mdi mdi-format-list-bulleted-square"></i>
                 <span class="menu-title">Categories</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse {{ show_class(['admin/categories/*']) }}" id="categories">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item {{ active_class(['admin/categories/categories']) }}">
+                        <a class="nav-link" href="{{ route('admin.categories') }}">Categories</a>
+                    </li>
+                    <li class="nav-item {{ active_class(['admin/categories/sub_categories']) }}">
+                        <a class="nav-link" href="{{ route('admin.subCategories') }}">Sub Categories</a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item {{ active_class(['admin/basic-ui/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#basic-ui"

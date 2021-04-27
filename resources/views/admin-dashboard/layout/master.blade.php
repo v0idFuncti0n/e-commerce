@@ -16,6 +16,7 @@
 {!! Html::style('/assets/plugins/perfect-scrollbar/perfect-scrollbar.css') !!}
 {!! Html::style('/css/datatables.css') !!}
 
+
 <!-- end plugin css -->
 
 @stack('plugin-styles')
@@ -48,6 +49,8 @@
 {!! Html::script('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
 {!! Html::script('assets/js/toastr.min.js') !!}
 {!! Html::script('assets/js/sweetalert2.min.js') !!}
+
+
 
 <!-- end base js -->
 
