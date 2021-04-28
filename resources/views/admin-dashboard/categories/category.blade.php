@@ -49,6 +49,13 @@
                                         @method('DELETE')
                                         <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
                                     </form>
+                                    <form style="display : inline;"
+                                          action="{{ route('admin.subCategories') }}"
+                                          method="POST">
+                                        @csrf
+                                        <input type="hidden" name="search" value="{{ $category->name }}">
+                                        <button type="submit" class="btn btn-primary btn-fw">Sub Categories</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -99,7 +106,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="edit-submit-form" action="{{ route('admin.categories.update', ['id' => ':id']) }}" method="POST">
+                    <form id="edit-submit-form" action="{{ route('admin.categories.update', ['id' => ':id']) }}"
+                          method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

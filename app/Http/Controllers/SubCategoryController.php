@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $sub_categories = SubCategory::all();
         $categories = Category::all();
-        return view('admin-dashboard.categories.sub_category', ['sub_categories' => $sub_categories, 'categories' => $categories]);
+        return view('admin-dashboard.categories.sub_category', ['sub_categories' => $sub_categories, 'categories' => $categories, 'search' => $request->search]);
     }
 
     public function store(Request $request){

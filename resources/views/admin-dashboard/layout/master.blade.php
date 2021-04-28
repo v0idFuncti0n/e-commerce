@@ -59,9 +59,9 @@
 <script>
     toastr.options.progressBar = true;
     @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            toastr.error('{{ $error }}');
-        @endforeach
+    @foreach ($errors->all() as $error)
+    toastr.error('{{ $error }}');
+    @endforeach
     @endif
 
     @if(session()->has('message'))
@@ -96,7 +96,18 @@
 {!! Html::script('assets/js/todolist.js') !!}
 {!! Html::script('/js/scripts.js') !!}
 <!-- end common js -->
+<script>
+    //datatable initialize
+    $(document).ready(function () {
+        let table = $('#datatable').DataTable({
+            "pagingType": "full_numbers"
+        });
+        @if(!empty($search))
+            table.search('{{ $search }}').draw();
+        @endif
+    });
 
+</script>
 
 
 @stack('custom-scripts')

@@ -48,6 +48,7 @@ Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'a
 
     // sub categories routes
     Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
+    Route::post('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
     Route::post('/sub-categories/store', [SubCategoryController::class, 'store'])->name('admin.subCategories.store');
     Route::delete('/sub-categories/delete/{id}', [SubCategoryController::class, 'delete'])->name('admin.subCategories.delete');
     Route::put('/sub-categories/update/{id}', [SubCategoryController::class, 'update'])->name('admin.subCategories.update');

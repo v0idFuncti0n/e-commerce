@@ -1,9 +1,4 @@
-//datatable initialize
-$(document).ready(function () {
-    $('#datatable').DataTable({
-        "pagingType": "full_numbers"
-    });
-});
+
 
 //delete button
 $('.btn-delete').on('click', function (event) {
