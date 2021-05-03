@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use DB;
 
 class CouponController extends Controller
 {
-    public function_construct()
+    public function _construct()
        {
            $this->middleware('auth:admin');
 }

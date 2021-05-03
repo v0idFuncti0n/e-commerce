@@ -60,7 +60,7 @@
         </li>
         </li>
         <li class="nav-item {{ active_class(['admin/coupons']) }}">
-            <a class="nav-link" href="{{ route('admin.coupon') }}">
+            <a class="nav-link" href="{{ route('admin.coupons') }}">
                 <i class="menu-icon mdi mdi-format-list-bulleted-square"></i>
                 <span class="menu-title">Coupon</span>
             </a>

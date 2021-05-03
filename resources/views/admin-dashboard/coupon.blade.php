@@ -32,23 +32,21 @@
                                 <td>
                                     {{ $row->discount }} %
                                 </td>
-                                <td>
-                                    {{ $category->updated_at }}
-                                </td>
-                                <td class="dt">
+
+                             {{--   <td class="dt">
                                     <button type="button" class="btn btn-warning btn-fw btn-edit" data-toggle="modal"
                                             data-target="#edit-category-modal"
-                                            data-category_id="{{ $category->id }}"
-                                            data-category_name="{{ $category->name }}">Edit
+                                            data-category_id="{{ $row->coupon }}"
+                                            data-category_name="{{ $row->discount }}">Edit
                                     </button>
                                     <form style="display : inline;"
-                                          action="{{ route('admin.categories.delete', ['id' => $category->id]) }}"
+                                          action="{{ route('admin.categories.delete', ['id' => $coupon->id]) }}"
                                           method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
                                     </form>
-                                </td>
+                                </td>--}}
                             </tr>
                         @endforeach
                         </tbody>
@@ -72,19 +70,19 @@
                     <form id="add-submit-form" action="{{ route("admin.coupon.store") }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="category_name">Coupon code (%) :</label>
+                            <label for="category_name">Coupon code :</label>
                             <input type="text" class="form-control" name="coupon"
                                    placeholder="Coupon Code">
                         </div>
                         <div class="form-group">
-                            <label for="category_name">Coupon discount :</label>
+                            <label for="category_name">Coupon discount (%):</label>
                             <input type="text" class="form-control" name="discount"
                                    placeholder="Coupon discount">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="add-submit-button" type="button" class="btn btn-primary">Add Category</button>
+                    <button id="add-submit-button" type="button" class="btn btn-primary">Add Coupon</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </a>
                 </div>
@@ -93,7 +91,7 @@
     </div>
 
     {{--edit category modal--}}
-    <div id="edit-category-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+   {{-- <div id="edit-category-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -120,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 @endsection
 
 

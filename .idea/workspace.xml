@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="done all dashboard added">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_04_27_115153_create_coupons_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/coupon.blade.php" afterDir="false" />
+    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="coupon &#10;prblm message:target class doesn't exist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/coupon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/coupon.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -205,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619137571036</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="coupon &#10;prblm message:target class doesn't exist">
+      <created>1620009863626</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620009863626</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +264,8 @@
     <MESSAGE value="Added multi auth system using roles ( admin , client )." />
     <MESSAGE value="Error : Call to undefined function active_class() needs tobe fixed" />
     <MESSAGE value="Error : Call to undefined function active_class() needs to be fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error : Call to undefined function active_class() needs to be fixed" />
+    <MESSAGE value="coupon &#10;prblm message:target class doesn't exist" />
+    <option name="LAST_COMMIT_MESSAGE" value="coupon &#10;prblm message:target class doesn't exist" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

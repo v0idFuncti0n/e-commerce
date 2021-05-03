@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -322,8 +323,11 @@ Route::get('/clear-cache', function () {
     return "Cache is cleared";
 });
 //coupon
-Route:: get('admin/sub/coupon','Controllers/CouponController@coupon')->name('admin.coupon');
-Route:: post('admin/store/coupon','Admin/Category/CouponController@storeCoupon')->name('store.coupon');
+Route::get('/coupons', [CouponController::class, 'Coupon'])->name('admin.coupons');
+Route::post('/coupons/store', [CouponController::class, 'StoreCoupon'])->name('admin.coupon.store');
+//Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
+//Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+
 // 404 for undefined routes
 /*Route::any('/{page?}', function () {
     return View::make('pages.error-pages.error-404');
