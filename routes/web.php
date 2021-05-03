@@ -314,7 +314,9 @@ Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
-
+//coupon
+Route:: get('admin/sub/coupon','Controllers/CouponController@coupon')->name('admin.coupon');
+Route:: post('admin/store/coupon','Admin/Category/CouponController@storeCoupon')->name('store.coupon');
 // 404 for undefined routes
 /*Route::any('/{page?}', function () {
     return View::make('pages.error-pages.error-404');

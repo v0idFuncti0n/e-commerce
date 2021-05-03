@@ -53,6 +53,13 @@
                 <span class="menu-title">Categories</span>
             </a>
         </li>
+        </li>
+        <li class="nav-item {{ active_class(['admin/coupons']) }}">
+            <a class="nav-link" href="{{ route('admin.coupon') }}">
+                <i class="menu-icon mdi mdi-format-list-bulleted-square"></i>
+                <span class="menu-title">Coupon</span>
+            </a>
+        </li>
         <li class="nav-item {{ active_class(['admin/basic-ui/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#basic-ui"
                aria-expanded="{{ is_active_route(['admin/basic-ui/*']) }}" aria-controls="basic-ui">
