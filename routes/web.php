@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +45,13 @@ Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'a
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
     Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
     Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+
+    // sub categories routes
+    Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
+    Route::post('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
+    Route::post('/sub-categories/store', [SubCategoryController::class, 'store'])->name('admin.subCategories.store');
+    Route::delete('/sub-categories/delete/{id}', [SubCategoryController::class, 'delete'])->name('admin.subCategories.delete');
+    Route::put('/sub-categories/update/{id}', [SubCategoryController::class, 'update'])->name('admin.subCategories.update');
 
     // default template routes
     Route::group(['prefix' => 'basic-ui'], function () {
