@@ -91,6 +91,37 @@ $('#edit-sub-category-modal').on('show.bs.modal', function (event) {
 }).on('shown.bs.modal', function () {
     $('#edit-category-modal input[name="category_name"]').trigger('focus');
 });
+//modal edit coupon
+$('#edit-coupon-modal').on('show.bs.modal', function (event) {
+
+
+    let button = $(event.relatedTarget);
+    let coupon_id = button.data('coupon_id');
+    let coupon_name = button.data('coupon_name');
+    let disc_name = button.data('disc_name');
+
+   /* let modal = $(this);
+    modal.find('.modal-body #edit-submit-form input[name="sub_category_name"]').val(sub_category_name);
+    $('#edit_select_category_id option').each(function (){
+        if(category_id === parseInt(this.value)){
+            this.selected = true;
+        }
+    });*/
+
+    let form = document.getElementById('edit-submit-form');
+    let submit_button = document.getElementById('edit-submit-button');
+
+    form.addEventListener('submit', function () {
+        replaceRouteAction('edit-submit-form', coupon_id);
+    });
+
+    submit_button.addEventListener('click', function () {
+        replaceRouteAction('edit-submit-form', coupon_id);
+        form.submit();
+    });
+}).on('shown.bs.modal', function () {
+    $('#edit-coupon-modal input[name="coupon"]').trigger('focus');
+});
 function replaceRouteAction(formName, id) {
     let form = document.getElementById(formName);
     form.action = form.action.replace(':id', id);

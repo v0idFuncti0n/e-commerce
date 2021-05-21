@@ -33,20 +33,21 @@
                                     {{ $row->discount }} %
                                 </td>
 
-                             {{--   <td class="dt">
+                               <td class="dt">
                                     <button type="button" class="btn btn-warning btn-fw btn-edit" data-toggle="modal"
-                                            data-target="#edit-category-modal"
-                                            data-category_id="{{ $row->coupon }}"
-                                            data-category_name="{{ $row->discount }}">Edit
+                                            data-target="#edit-coupon-modal"
+                                            data-coupon_id="{{ $row->id }}"
+                                            data-coupon_name="{{ $row->coupon }}"
+                                            data-disc_name="{{ $row->discount }}">Edit
                                     </button>
                                     <form style="display : inline;"
-                                          action="{{ route('admin.categories.delete', ['id' => $coupon->id]) }}"
+                                          action="{{ route('admin.coupon.delete', ['id' => $row->id]) }}"
                                           method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
                                     </form>
-                                </td>--}}
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -90,35 +91,35 @@
         </div>
     </div>
 
-    {{--edit category modal--}}
-   {{-- <div id="edit-category-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    {{--edit coupon modal--}}
+   <div id="edit-coupon-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Category</h5>
+                    <h5 class="modal-title">Edit This Coupon</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="edit-submit-form" action="{{ route('admin.categories.update', ['id' => ':id']) }}" method="POST">
+                    <form id="edit-submit-form" action="{{ route('admin.coupon.update', ['id' => ':id']) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label for="category_name">Category Name :</label>
-                            <input type="text" class="form-control" name="category_name"
+                            <label for="coupon_name">Coupon Name :</label>
+                            <input type="text" class="form-control" name="coupon"
                                    placeholder="Books">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="edit-submit-button" type="button" class="btn btn-warning">Edit Category</button>
+                    <button id="edit-submit-button" type="button" class="btn btn-warning">Edit</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </a>
                 </div>
             </div>
         </div>
-    </div>--}}
+    </div>
 @endsection
 
 

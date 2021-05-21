@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Coupon;
 
 class CouponController extends Controller
 {
@@ -27,4 +28,29 @@ public function StoreCoupon (Request $request){
         );
         return Redirect()->back()->with($notification);
 }
+    public function deletecoupon ($id){
+        DB ::table('coupons')->where('id',$id)->delete();
+        $notification=array(
+            'message'=>'Coupon Deleted Successfully',
+            'alert-type'=>'success',
+        );
+        return Redirect()->back()->with($notification);
+
+    }
+    public function EditCoupon(Request $request, $id){
+        $request->validate([
+            'coupon' => 'required|unique:coupons,coupon|max:255'
+        ]);
+
+        $coupon = Coupon::find($id);
+        $coupon->coupon = $request->coupon;
+        $coupon->save();
+
+        $notification = array(
+            'message' => 'Coupon has been updated successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

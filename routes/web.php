@@ -325,8 +325,8 @@ Route::get('/clear-cache', function () {
 //coupon
 Route::get('/coupons', [CouponController::class, 'Coupon'])->name('admin.coupons');
 Route::post('/coupons/store', [CouponController::class, 'StoreCoupon'])->name('admin.coupon.store');
-//Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
-//Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+Route::delete('/coupons/delete/{id}', [CouponController::class, 'deletecoupon'])->name('admin.coupon.delete');
+Route::put('/coupons/update/{id}', [CouponController::class, 'EditCoupon'])->name('admin.coupon.update');
 
 // 404 for undefined routes
 /*Route::any('/{page?}', function () {
