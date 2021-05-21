@@ -110,6 +110,11 @@
                             <input type="text" class="form-control" name="coupon"
                                    placeholder="Books">
                         </div>
+                        <div class="form-group">
+                            <label for="disc_name">New Percentage :</label>
+                            <input type="text" class="form-control" name="discount"
+                                   placeholder="%">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

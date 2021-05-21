@@ -100,14 +100,6 @@ $('#edit-coupon-modal').on('show.bs.modal', function (event) {
     let coupon_name = button.data('coupon_name');
     let disc_name = button.data('disc_name');
 
-   /* let modal = $(this);
-    modal.find('.modal-body #edit-submit-form input[name="sub_category_name"]').val(sub_category_name);
-    $('#edit_select_category_id option').each(function (){
-        if(category_id === parseInt(this.value)){
-            this.selected = true;
-        }
-    });*/
-
     let form = document.getElementById('edit-submit-form');
     let submit_button = document.getElementById('edit-submit-button');
 
