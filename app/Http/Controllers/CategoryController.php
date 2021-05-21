@@ -58,4 +58,9 @@ class CategoryController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function getSubCategories($categoryId) {
+        $subCategories = Category::find($categoryId)->subCategories;
+        return response()->json(array('subCategories'=> $subCategories));
+    }
 }

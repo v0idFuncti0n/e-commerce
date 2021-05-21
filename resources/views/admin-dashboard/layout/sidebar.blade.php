@@ -23,7 +23,8 @@
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button class="dropdown-item"
-                                       onclick="e.preventDefault(); this.closest('form').submit();"> Sign Out </button>
+                                            onclick="e.preventDefault(); this.closest('form').submit();"> Sign Out
+                                    </button>
                                 </form>
 
                             </div>
@@ -52,18 +53,35 @@
                     <li class="nav-item {{ active_class(['admin/categories/categories']) }}">
                         <a class="nav-link" href="{{ route('admin.categories') }}">Categories</a>
                     </li>
-                    <li class="nav-item {{ active_class(['admin/categories/sub_categories']) }}">
+                    <li class="nav-item {{ active_class(['admin/categories/sub-categories']) }}">
                         <a class="nav-link" href="{{ route('admin.subCategories') }}">Sub Categories</a>
                     </li>
                 </ul>
             </div>
-        </li>
         </li>
         <li class="nav-item {{ active_class(['admin/coupons']) }}">
             <a class="nav-link" href="{{ route('admin.coupons') }}">
                 <i class="menu-icon mdi mdi-format-list-bulleted-square"></i>
                 <span class="menu-title">Coupon</span>
             </a>
+        </li>
+        <li class="nav-item {{ active_class(['admin/products/*']) }}">
+            <a class="nav-link" data-toggle="collapse" href="#products"
+               aria-expanded="{{ is_active_route(['admin/products/*']) }}" aria-controls="products">
+                <i class="menu-icon mdi mdi-plus-box"></i>
+                <span class="menu-title">Products</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ show_class(['admin/products/*']) }}" id="products">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item {{ active_class(['admin/products/create']) }}">
+                        <a class="nav-link" href="{{ route('admin.products.create') }}">Add Product</a>
+                    </li>
+                    <li class="nav-item {{ active_class(['admin/products/all']) }}">
+                        <a class="nav-link" href="{{ route('admin.products') }}">All Product</a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item {{ active_class(['admin/basic-ui/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#basic-ui"

@@ -12,9 +12,11 @@
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
     <!-- plugin css -->
+
 {!! Html::style('/assets/plugins/@mdi/font/css/materialdesignicons.min.css') !!}
 {!! Html::style('/assets/plugins/perfect-scrollbar/perfect-scrollbar.css') !!}
 {!! Html::style('/css/datatables.css') !!}
+
 
 
 <!-- end plugin css -->
@@ -25,6 +27,12 @@
 {!! Html::style('css/admin-dashboard.css') !!}
 {!! Html::style('/css/toastr.css') !!}
 {!! Html::style('/css/sweetalert2.min.css') !!}
+{!! Html::style('/css/quill.core.css') !!}
+{!! Html::style('/css/quill.snow.css') !!}
+{!! Html::style('/css/uppy.min.css') !!}
+{!! Html::style('/css/bootstrap-tagsinput.css') !!}
+
+@yield('our-styles')
 <!-- end common css -->
 
     @stack('style')
@@ -49,7 +57,9 @@
 {!! Html::script('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
 {!! Html::script('assets/js/toastr.min.js') !!}
 {!! Html::script('assets/js/sweetalert2.min.js') !!}
-
+{!! Html::script('assets/js/quill.min.js') !!}
+{!! Html::script('assets/js/uppy.min.js') !!}
+{!! Html::script('assets/js/bootstrap-tagsinput.min.js') !!}
 
 
 <!-- end base js -->
@@ -95,6 +105,7 @@
 {!! Html::script('assets/js/settings.js') !!}
 {!! Html::script('assets/js/todolist.js') !!}
 {!! Html::script('/js/scripts.js') !!}
+@yield('our-scripts')
 <!-- end common js -->
 <script>
     //datatable initialize
@@ -103,7 +114,7 @@
             "pagingType": "full_numbers"
         });
         @if(!empty($search))
-            table.search('{{ $search }}').draw();
+        table.search('{{ $search }}').draw();
         @endif
     });
 
@@ -114,5 +125,6 @@
 </body>
 {!! Html::script('assets/js/jquery-3.3.1.js') !!}
 {!! Html::script('assets/js/datatables.js') !!}
+
 <!-- end used js -->
 </html>

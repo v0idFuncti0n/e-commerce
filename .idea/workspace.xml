@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="coupon &#10;prblm message:target class doesn't exist">
+    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="logout, manage profile, profile photo are working in admin dashboard">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Image.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/ProductFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_18_195522_create_products_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_05_18_202739_create_product_images_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/ProductSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-tagsinput.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-tagsinput.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/quill.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/quill.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/uppy.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/uppy.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap-tagsinput.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/quill.core.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/quill.snow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/uppy.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/products/create_product.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/products/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/e-commerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/e-commerce.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_29_2021_5_33_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_29_2021_5_33_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CouponController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/coupon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/coupon.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SubCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/categories/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/categories/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/categories/sub_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/categories/sub_category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -146,6 +177,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="ProjectId" id="1qR7oWaRpN5p5O8NsmEXW6DTcZH" />
@@ -166,6 +198,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/config/jetstream.php" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/config/jetstream.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -189,6 +222,19 @@
       <workItem from="1619028529687" duration="6145000" />
       <workItem from="1619104907289" duration="3749000" />
       <workItem from="1619133031429" duration="4952000" />
+      <workItem from="1620071108870" duration="16000" />
+      <workItem from="1620150173759" duration="136000" />
+      <workItem from="1620233193546" duration="603000" />
+      <workItem from="1621017426941" duration="1746000" />
+      <workItem from="1621173687129" duration="42000" />
+      <workItem from="1621366824317" duration="12263000" />
+      <workItem from="1621423385882" duration="16417000" />
+      <workItem from="1621440872324" duration="3629000" />
+      <workItem from="1621456814641" duration="7359000" />
+      <workItem from="1621511709878" duration="2528000" />
+      <workItem from="1621538833062" duration="629000" />
+      <workItem from="1621540677558" duration="6642000" />
+      <workItem from="1621603438557" duration="9179000" />
     </task>
     <task id="LOCAL-00001" summary="Added multi auth system using roles ( admin , client ).">
       <created>1618967940515</created>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
@@ -39,20 +40,37 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'admin'], function () {
 
+    // Dashboard
     Route::get('/dashboard', [AdminController::class, 'showDashboard'])->name('admin.dashboard');
 
-    // categories routes
-    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
-    Route::post('/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
-    Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
-    Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
 
-    // sub categories routes
-    Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
-    Route::post('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
-    Route::post('/sub-categories/store', [SubCategoryController::class, 'store'])->name('admin.subCategories.store');
-    Route::delete('/sub-categories/delete/{id}', [SubCategoryController::class, 'delete'])->name('admin.subCategories.delete');
-    Route::put('/sub-categories/update/{id}', [SubCategoryController::class, 'update'])->name('admin.subCategories.update');
+    Route::group(['prefix' => 'categories'], function () {
+        // categories routes
+        Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
+        Route::post('/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
+        Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
+        Route::put('/categories/update/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+
+        Route::post('/get-sub-categories/{id}',[CategoryController::class, 'getSubCategories'])->name('admin.categories.getSubCategories');
+
+        // sub categories routes
+        Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
+        Route::post('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.subCategories');
+        Route::post('/sub-categories/store', [SubCategoryController::class, 'store'])->name('admin.subCategories.store');
+        Route::delete('/sub-categories/delete/{id}', [SubCategoryController::class, 'delete'])->name('admin.subCategories.delete');
+        Route::put('/sub-categories/update/{id}', [SubCategoryController::class, 'update'])->name('admin.subCategories.update');
+    });
+
+    // product routes
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/all', [ProductController::class, 'index'])->name('admin.products');
+        Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
+        Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
+    });
+
+    //coupon
+    Route::get('/coupons', [CouponController::class, 'Coupon'])->name('admin.coupons');
+    Route::post('/coupons/store', [CouponController::class, 'StoreCoupon'])->name('admin.coupon.store');
 
     // default template routes
     Route::group(['prefix' => 'basic-ui'], function () {
@@ -322,9 +340,7 @@ Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
-//coupon
-Route::get('/coupons', [CouponController::class, 'Coupon'])->name('admin.coupons');
-Route::post('/coupons/store', [CouponController::class, 'StoreCoupon'])->name('admin.coupon.store');
+
 Route::delete('/coupons/delete/{id}', [CouponController::class, 'deletecoupon'])->name('admin.coupon.delete');
 Route::put('/coupons/update/{id}', [CouponController::class, 'EditCoupon'])->name('admin.coupon.update');
 

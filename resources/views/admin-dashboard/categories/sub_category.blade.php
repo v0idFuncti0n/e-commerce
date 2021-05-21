@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h4 class="card-title">Categories
                     <button type="button" class="btn btn-primary btn-fw float-right" data-toggle="modal"
-                            data-target="#add-sub-category-modal">New Sub Category
+                            data-target="#add-sub-category-modal">Add Sub Category
                     </button>
                 </h4>
                 <p class="card-description"></p>
