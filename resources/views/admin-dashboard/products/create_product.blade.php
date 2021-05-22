@@ -37,9 +37,19 @@
                 <div class="form-group">
                     <label for="title" class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                     <input type="text" class="form-control form-control-lg" id="title" name="title">
+                    <div id="titleError" class="col-sm-3" style="display: none">
+                        <small class="text-danger">
+                            Title is required and should be less than 255 characters.
+                        </small>
+                    </div>
                 </div>
                 <label for="editor" class="col-sm-2 col-form-label col-form-label-lg">Description</label>
                 <div class="form-group" id="editor" style="min-height: 200px">
+                </div>
+                <div id="editorError" class="col-sm-6" style="display: none">
+                    <small class="text-danger">
+                        Description should not be empty.
+                    </small>
                 </div>
                 <label for="description" style="display: none"></label>
                 <input type="text" name="description" id="description" style="display: none">
@@ -47,14 +57,29 @@
                     <div class="form-group col-sm-4">
                         <label for="code" class="col-sm-4 col-form-label col-form-label-lg">Code</label>
                         <input type="text" class="form-control form-control-lg" id="code" name="code">
+                        <div id="codeError" style="display: none">
+                            <small class="text-danger">
+                                Code is required and should be less than 255 characters.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="quantity" class="col-sm-4 col-form-label col-form-label-lg">Qte</label>
                         <input type="number" class="form-control form-control-lg" id="quantity" name="quantity" min="1">
+                        <div id="quantityError" style="display: none">
+                            <small class="text-danger">
+                                Quantity is required.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="brand" class="col-sm-4 col-form-label col-form-label-lg">Brand</label>
                         <input type="text" class="form-control form-control-lg" id="brand" name="brand">
+                        <div id="brandError" style="display: none">
+                            <small class="text-danger">
+                                Brand is required and should be less than 255 characters.
+                            </small>
+                        </div>
                     </div>
                 </div>
 
@@ -82,11 +107,21 @@
                         <label for="color" class="col-sm-6 col-form-label col-form-label-lg">Colors</label>
                         <input type="text" class="form-control form-control-lg" data-role="tagsinput" id="color"
                                name="color">
+                        <div id="colorError" style="display: none">
+                            <small class="text-danger">
+                                At least on color is required and should be less than 255 characters.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="size" class="col-sm-6 col-form-label col-form-label-lg">Sizes</label>
                         <input type="text" class="form-control form-control-lg" data-role="tagsinput" id="size"
                                name="size">
+                        <div id="sizeError" style="display: none">
+                            <small class="text-danger">
+                                At lest one size is required and should be less than 255 characters.
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -94,12 +129,22 @@
                         <label for="selling_price" class="col-sm-6 col-form-label col-form-label-lg">Selling
                             Price</label>
                         <input type="text" class="form-control form-control-lg" id="selling_price" name="selling_price">
+                        <div id="selling_priceError" style="display: none">
+                            <small class="text-danger">
+                                Selling Price is required.
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="discount_price" class="col-sm-6 col-form-label col-form-label-lg">Discount
                             Price</label>
                         <input type="text" class="form-control form-control-lg" id="discount_price"
                                name="discount_price">
+                        <div id="discount_priceError" style="display: none">
+                            <small class="text-danger">
+                                Discount Price is required.
+                            </small>
+                        </div>
                     </div>
                 </div>
                 <div class="from-row">
@@ -110,9 +155,14 @@
                 <div class="from-row">
                     <label for="video_link">Video Link</label>
                     <input class="form-control form-control-lg" type="url" name="video_link" id="video_link">
+                    <div id="video_linkError" style="display: none">
+                        <small class="text-danger">
+                            Video Link is required and should be less than 255 characters.
+                        </small>
+                    </div>
                 </div>
                 <br>
-                <button class="btn btn-primary btn-lg btn-block" type="submit" id="btn-submit">Add Product</button>
+                <button class="btn btn-primary btn-lg btn-block" type="button" id="btn-submit">Add Product</button>
             </form>
 
         </div>
@@ -121,7 +171,16 @@
 
 @section('our-scripts')
     <script>
-        let descriptionInput = $('#description');
+        let title = $('#title');
+        let description = $('#description');
+        let code = $('#code');
+        let quantity = $('#quantity');
+        let brand = $('#brand');
+        let color = $('#color');
+        let size = $('#size');
+        let sellingPrice = $('#selling_price');
+        let discountPrice = $('#discount_price');
+        let videoLink = $('#video_link');
 
         // Quill js
         var toolbarOptions = [
@@ -154,8 +213,97 @@
         var editor = new Quill('#editor', options);
 
         editor.on('text-change', function () {
-            descriptionInput.val(editor.root.innerHTML);
+            description.val(editor.root.innerHTML);
         });
+
+        function isQuillEmpty() {
+            return editor.getText().trim().length === 0 && editor.container.firstChild.innerHTML.includes("img") === false;
+        }
+
+        function scrollTop() {
+            window.scrollTo(0, 0);
+        }
+
+        function showError(fieldId) {
+            $(fieldId + 'Error').show();
+            $(fieldId).addClass('is-invalid');
+        }
+
+        function hideError(fieldId) {
+            $(fieldId + 'Error').hide();
+            $(fieldId).removeClass('is-invalid');
+        }
+
+        function validateForm() {
+            let hasErrors = false;
+            console.log(title.val());
+            if (title.val() === '' || title.val().length > 255) {
+                hasErrors = true;
+                showError('#title');
+            } else {
+                hideError('#title');
+            }
+            if (isQuillEmpty()) {
+                hasErrors = true;
+                showError('#editor');
+            } else {
+                hideError('#editor');
+            }
+            if (code.val() === '' || code.val().length > 255) {
+                hasErrors = true;
+                showError('#code');
+            } else {
+                hideError('#code');
+            }
+            if (quantity.val() === '' || quantity.val().length > 255) {
+                hasErrors = true;
+                showError('#quantity');
+            } else {
+                hideError('#quantity');
+            }
+            if (brand.val() === '' || brand.val().length > 255) {
+                hasErrors = true;
+                showError('#brand');
+            } else {
+                hideError('#brand');
+            }
+            if (color.val() === '' || color.val().length > 255) {
+                hasErrors = true;
+                showError('#color');
+            } else {
+                hideError('#color');
+            }
+            if (size.val() === '' || size.val().length > 255) {
+                hasErrors = true;
+                showError('#size');
+            } else {
+                hideError('#size');
+            }
+            if (sellingPrice.val() === '' || sellingPrice.val().length > 255) {
+                hasErrors = true;
+                showError('#selling_price');
+            } else {
+                hideError('#selling_price');
+            }
+            if (discountPrice.val() === '' || discountPrice.val().length > 255) {
+                hasErrors = true;
+                showError('#discount_price');
+            } else {
+                hideError('#discount_price');
+            }
+            if (videoLink.val() === '' || videoLink.val().length > 255) {
+                hasErrors = true;
+                showError('#video_link');
+            } else {
+                hideError('#video_link');
+            }
+
+            if (hasErrors) {
+                scrollTop();
+            }
+            return hasErrors;
+        }
+
 
         // Uppy
         const uppy = Uppy.Core({
@@ -194,8 +342,9 @@
             addResultToForm: true,
             multipleResults: true,
             submitOnSuccess: true,
-            triggerUploadOnSubmit: true,
+            triggerUploadOnSubmit: false,
         })
+
         uppy.on('complete', () => {
             window.location.replace('{{ route('admin.products.create') }}');
         });
@@ -212,7 +361,7 @@
                 },
                 success: function (data) {
                     subCategoriesSelect.empty();
-                    data.subCategories.forEach(function(subCategory){
+                    data.subCategories.forEach(function (subCategory) {
                         subCategoriesSelect.append(new Option(subCategory.name, subCategory.id));
                     });
 
@@ -220,11 +369,19 @@
             });
         }
 
-
         $('#category').on('change', function () {
             let category_id = $(this).val();
             getSubCategories(category_id);
         });
 
+        btnSubmit = $('#btn-submit');
+        productForm = $('#product-form');
+
+
+        btnSubmit.on('click', function () {
+            if (!validateForm()) {
+                uppy.upload();
+            }
+        });
     </script>
 @endsection

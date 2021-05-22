@@ -53,11 +53,19 @@
                                     {{ $product->selling_price }}
                                 </td>
                                 <td>
-                                    {{ $product->status }}
+                                    {{ $product->status ? 'Listed' : 'Not Listed' }}
                                 </td>
                                 <td>
-                                    <a href=""><button type="button" class="btn btn-warning">Edit</button></a>
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <form style="display : inline;">
+                                            <button type="button" class="btn btn-warning">Edit</button>
+                                    </form>
+                                    <form style="display : inline;"
+                                          action="{{ route('admin.products.delete', ['id' => $product->id]) }}"
+                                          method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
