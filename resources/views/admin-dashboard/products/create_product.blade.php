@@ -325,7 +325,7 @@
         });
 
         uppy.use(Uppy.XHRUpload, {
-            endpoint: '{{ route('admin.products') }}',
+            endpoint: '{{ route('admin.products.store') }}',
             headers: {
                 'X-CSRF-Token': " {{ csrf_token() }} "
             },
@@ -346,7 +346,7 @@
         })
 
         uppy.on('complete', () => {
-            window.location.replace('{{ route('admin.products.create') }}');
+            window.location.replace('{{ route('admin.products') }}');
         });
 
         let subCategoriesSelect = $('#sub_category');
