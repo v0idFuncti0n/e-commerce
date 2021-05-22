@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -61,7 +62,7 @@ class ProductController extends Controller
             $fileName = $file->hashName();
 
             $newImage = new Image();
-            $newImage->path = 'storage/products_images/' . $newProduct->id . '/' . $fileName;
+            $newImage->path = 'products_images/' . $newProduct->id . '/' . $fileName;
             $newImage->is_thumbnail = $IS_FIRST_IMAGE;
             $IS_FIRST_IMAGE = false;
 
@@ -88,15 +89,12 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin-dashboard.products.edit_product', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -115,11 +113,12 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::find($id);
-        $images = $product->images;
 
-        foreach($images as $image){
+        $images = $product->images;
+        foreach ($images as $image) {
             Image::destroy($image->id);
         }
+        Storage::disk('public')->deleteDirectory('/products_images/'.$product->id);
 
         Product::destroy($product->id);
 

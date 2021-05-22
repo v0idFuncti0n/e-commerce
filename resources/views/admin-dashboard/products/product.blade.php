@@ -25,8 +25,9 @@
                         <thead>
                         <tr>
                             <th> Id</th>
-                            <th> Thumbnail</th>
                             <th> Title</th>
+                            <th> Thumbnail</th>
+                            <th> Category</th>
                             <th> Quantity</th>
                             <th> Selling Price</th>
                             <th> Status</th>
@@ -40,11 +41,14 @@
                                     {{ $product->id }}
                                 </td>
                                 <td>
-                                    <img src="{{ asset($product->images->where('is_thumbnail', 1)->first()->path) }}"
+                                    {{ $product->title }}
+                                </td>
+                                <td>
+                                    <img src="{{ asset('/storage/'.$product->images->where('is_thumbnail', 1)->first()->path) }}"
                                          alt="{{ $product->name }}">
                                 </td>
                                 <td>
-                                    {{ $product->title }}
+                                    {{ $product->category->name }}
                                 </td>
                                 <td>
                                     {{ $product->quantity }}
@@ -53,11 +57,18 @@
                                     {{ $product->selling_price }}
                                 </td>
                                 <td>
-                                    {{ $product->status ? 'Listed' : 'Not Listed' }}
+                                    @if($product->status == 1)
+                                        <span class="badge badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-danger">Inactive</span>
+                                    @endif
                                 </td>
                                 <td>
-                                    <form style="display : inline;">
-                                            <button type="button" class="btn btn-warning">Edit</button>
+                                    <form style="display : inline;"
+                                          action="{{ route('admin.products.edit', ['id' => $product->id]) }}"
+                                          method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning btn-fw">Edit</button>
                                     </form>
                                     <form style="display : inline;"
                                           action="{{ route('admin.products.delete', ['id' => $product->id]) }}"

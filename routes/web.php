@@ -67,6 +67,7 @@ Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'a
         Route::get('/create', [ProductController::class, 'create'])->name('admin.products.create');
         Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
         Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('admin.products.delete');
+        Route::post('/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
     });
 
     //coupon
