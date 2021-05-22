@@ -68,9 +68,11 @@ Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'a
         Route::post('/store', [ProductController::class, 'store'])->name('admin.products.store');
         Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('admin.products.delete');
         Route::post('/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::post('/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::get('/get-product-images/{id}', [ProductController::class, 'getImages'])->name('admin.products.images');
     });
 
-    //coupon
+    // coupon
     Route::get('/coupons', [CouponController::class, 'Coupon'])->name('admin.coupons');
     Route::post('/coupons/store', [CouponController::class, 'StoreCoupon'])->name('admin.coupon.store');
 

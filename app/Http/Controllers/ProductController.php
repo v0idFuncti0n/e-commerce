@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -62,6 +63,7 @@ class ProductController extends Controller
             $fileName = $file->hashName();
 
             $newImage = new Image();
+            $newImage->name = $fileName;
             $newImage->path = 'products_images/' . $newProduct->id . '/' . $fileName;
             $newImage->is_thumbnail = $IS_FIRST_IMAGE;
             $IS_FIRST_IMAGE = false;
@@ -92,21 +94,65 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
+        $categories = Category::all();
+        $sub_categories = $categories->first()->subCategories;
+
         return view('admin-dashboard.products.edit_product', [
-            'product' => $product
+            'product' => $product,
+            'categories' => $categories,
+            'sub_categories' => $sub_categories,
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
+
+    public function update(Request $request)
     {
-        //
+        $product = Product::find($request->id);
+        $product->title = $request->title;
+        $product->description = $request->description;
+        $product->code = $request->code;
+        $product->quantity = $request->quantity;
+        $product->brand = $request->brand;
+        $product->color = $request->color;
+        $product->size = $request->size;
+        $product->selling_price = $request->selling_price;
+        $product->discount_price = $request->discount_price;
+        $product->video_link = $request->video_link;
+        $product->status = 1;
+
+        Category::find($request->category)->products()->save($product);
+        if ($request->sub_category != null) {
+            SubCategory::find($request->sub_category)->products()->save($product);
+        } else {
+            $product->sub_category_id = null;
+        }
+
+        $images = $product->images;
+        foreach ($images as $image) {
+            Image::destroy($image->id);
+        }
+        Storage::disk('public')->deleteDirectory('/products_images/' . $product->id);
+        $IS_FIRST_IMAGE = true;
+        foreach ($request->file('files') as $file) {
+
+            $fileName = $file->hashName();
+
+            $newImage = new Image();
+            $newImage->name = $fileName;
+            $newImage->path = 'products_images/' . $product->id . '/' . $fileName;
+            $newImage->is_thumbnail = $IS_FIRST_IMAGE;
+            $IS_FIRST_IMAGE = false;
+
+            $product->images()->save($newImage);
+
+            $file->move(public_path('storage/products_images/' . $product->id), $fileName);
+        }
+
+        $product->save();
+
+        return response()->json([
+            'success' => 200
+        ]);
     }
 
 
@@ -118,7 +164,7 @@ class ProductController extends Controller
         foreach ($images as $image) {
             Image::destroy($image->id);
         }
-        Storage::disk('public')->deleteDirectory('/products_images/'.$product->id);
+        Storage::disk('public')->deleteDirectory('/products_images/' . $product->id);
 
         Product::destroy($product->id);
 
@@ -128,5 +174,18 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function getImages($id)
+    {
+        $product = Product::find($id);
+        $images = array();
+        foreach ($product->images as $image) {
+            $images[] = array(
+                'image' => Storage::disk('public')->url($image->path),
+                'name' => $image->name
+            );
+        }
+        return response()->json($images);
     }
 }

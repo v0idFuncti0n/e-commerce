@@ -325,7 +325,7 @@
         });
 
         uppy.use(Uppy.XHRUpload, {
-            endpoint: '{{ route('admin.products.store') }}',
+            endpoint: '{{ route('admin.products') }}',
             headers: {
                 'X-CSRF-Token': " {{ csrf_token() }} "
             },
