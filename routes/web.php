@@ -35,11 +35,11 @@ Route::get('/test', function () {
 
 
 Route::get('/', function () {
-    return view('frontpage.home');
+    return view('welcome');
 });
-Route::get('/404', function () {
+/*Route::get('/404', function () {
     return view('frontpage.cart');
-})->name('404');
+})->name('404');*/
 
 Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'admin'], function () {
 
