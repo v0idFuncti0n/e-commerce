@@ -34,9 +34,7 @@ Route::get('/test', function () {
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 /*Route::get('/404', function () {
     return view('frontpage.cart');
 })->name('404');*/
@@ -351,6 +349,8 @@ Route::get('/clear-cache', function () {
 Route::delete('/coupons/delete/{id}', [CouponController::class, 'deletecoupon'])->name('admin.coupon.delete');
 Route::put('/coupons/update/{id}', [CouponController::class, 'EditCoupon'])->name('admin.coupon.update');
 
+Route::redirect('/', '/all');
+Route::get('/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // 404 for undefined routes
 /*Route::any('/{page?}', function () {
