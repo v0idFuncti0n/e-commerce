@@ -348,7 +348,7 @@
                                 <div class="view overlay">
                                     <img src="{{ asset('storage/'.$product->images()->first()->path)}}" class="{{ $product->title }}"
                                          alt="{{ $product->title }}">
-                                    <a>
+                                    <a href="{{ route('showProduct', ['product' => $product->id]) }}">
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
                                 </div>
@@ -357,12 +357,12 @@
                                 <!--Card content-->
                                 <div class="card-body text-center">
                                     <!--Category & Title-->
-                                    <a href="" class="grey-text">
+                                    <a href="{{ route('showProduct', ['product' => $product->id]) }}" class="grey-text">
                                         <h5>{{ $product->category->name }}</h5>
                                     </a>
                                     <h5>
                                         <strong>
-                                            <a href="" class="dark-grey-text">{{ $product->title }}</a>
+                                            <a href="{{ route('showProduct', ['product' => $product->id]) }}" class="dark-grey-text">{{ $product->title }}</a>
                                         </strong>
                                     </h5>
 

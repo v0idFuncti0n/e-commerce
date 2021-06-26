@@ -349,8 +349,11 @@ Route::get('/clear-cache', function () {
 Route::delete('/coupons/delete/{id}', [CouponController::class, 'deletecoupon'])->name('admin.coupon.delete');
 Route::put('/coupons/update/{id}', [CouponController::class, 'EditCoupon'])->name('admin.coupon.update');
 
+Route::get('/product/{product}', [\App\Http\Controllers\HomeController::class, 'showProduct'])->name('showProduct');
+
 Route::redirect('/', '/all');
 Route::get('/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 // 404 for undefined routes
 /*Route::any('/{page?}', function () {

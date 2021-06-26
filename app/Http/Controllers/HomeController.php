@@ -25,4 +25,9 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('e-commerce.home-page',['products' => $products, 'currentCategory' => $category, 'currentSubCategory' => $subCategory, 'categories' => $categories, 'subCategories' => $subCategories]);
     }
+
+    public function showProduct($productId){
+        $product = Product::find($productId);
+        return view('e-commerce.product-page', ['product' => $product]);
+    }
 }
