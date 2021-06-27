@@ -59,8 +59,8 @@
             <!-- Right -->
             <ul class="navbar-nav nav-flex-icons">
                 <li class="nav-item">
-                    <a class="nav-link waves-effect">
-                        <span class="badge red z-depth-1 mr-1"> 1 </span>
+                    <a href="{{ route('showCart') }}" class="nav-link waves-effect">
+                        <span id="cart-count" class="badge red z-depth-1 mr-1"> {{ Cart::count() }} </span>
                         <i class="fas fa-shopping-cart"></i>
                         <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                     </a>
@@ -124,9 +124,9 @@
 
                     <p class="lead">
               <span class="mr-1">
-                <del>{{ $product->discount_price }}$</del>
+                <del>{{ $product->selling_price }}$</del>
               </span>
-                        <span>{{ $product->selling_price }}$</span>
+                        <span>{{ $product->discount_price }}$</span>
                     </p>
 
                     <p class="lead font-weight-bold">Description</p>
@@ -135,8 +135,8 @@
 
                     <form class="d-flex justify-content-left">
                         <!-- Default input -->
-                        <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-                        <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                        <input id="quantity" type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+                        <button class="btn btn-primary btn-md my-0 p" type="button" onclick="addToCart()">Add to cart
                             <i class="fas fa-shopping-cart ml-1"></i>
                         </button>
 
@@ -233,6 +233,28 @@
     // Animations initialization
     new WOW().init();
 
+
+    function addToCart(){
+        let product_id = {{ $product->id }};
+        let quantity = $('#quantity').val();
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: {
+                product_id: product_id,
+                quantity: quantity
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            url: "/cart/data/store/"+product_id,
+            success: function(data){
+                $('#cart-count').text(data.cartItems);
+                console.log(data);
+            }
+        });
+    }
 </script>
 </body>
 

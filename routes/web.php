@@ -351,6 +351,12 @@ Route::put('/coupons/update/{id}', [CouponController::class, 'EditCoupon'])->nam
 
 Route::get('/product/{product}', [\App\Http\Controllers\HomeController::class, 'showProduct'])->name('showProduct');
 
+Route::post('/cart/data/store/{id}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
+Route::post('/cart/data/remove/{rowId}/{productId}', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
+Route::get('/cart/showCart', [\App\Http\Controllers\HomeController::class, 'showCart'])->name('showCart');
+
+Route::post('stripe/order', [\App\Http\Controllers\StripeController::class, 'stripeOrder'])->name('stripe.order');
+
 Route::redirect('/', '/all');
 Route::get('/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

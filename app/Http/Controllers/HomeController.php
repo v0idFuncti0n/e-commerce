@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,5 +30,9 @@ class HomeController extends Controller
     public function showProduct($productId){
         $product = Product::find($productId);
         return view('e-commerce.product-page', ['product' => $product]);
+    }
+
+    public function showCart() {
+        return view('e-commerce.checkout-page', ['cartProducts' => Cart::content()]);
     }
 }
