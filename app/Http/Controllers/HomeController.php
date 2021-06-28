@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -35,4 +36,5 @@ class HomeController extends Controller
     public function showCart() {
         return view('e-commerce.checkout-page', ['cartProducts' => Cart::content()]);
     }
+
 }

@@ -94,22 +94,40 @@
                         <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-                       target="_blank">
-                        <i class="fab fa-github mr-2"></i>MDB GitHub
-                    </a>
-                </li>
+
+                    @auth
+                    <li class="mt-2 nav-item dropdown">
+                            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                <img class="mx-auto rounded-circle" style="height: 20%; width:20%" src="{{ Auth::user()->profile_photo_url }}">
+                                {{ Auth::user()->name }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                @role('admin')
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                @endrole
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <a role="menuitem" tabindex="-1" onclick="logout()">Logout</a>
+                                        </form>
+                                </li>
+                            </ul>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a href="{{ route('login') }}" class="nav-link waves-effect">Log in</a>
+                    </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link waves-effect">Register</a>
+                        </li>
+                        @endif
+                    @endauth
+
             </ul>
 
         </div>
@@ -470,6 +488,9 @@
 <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+    function logout() {
+        $('#logout-form').submit();
+    }
 
 </script>
 </body>

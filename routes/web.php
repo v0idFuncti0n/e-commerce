@@ -357,8 +357,7 @@ Route::get('/cart/showCart', [\App\Http\Controllers\HomeController::class, 'show
 
 Route::post('stripe/order', [\App\Http\Controllers\StripeController::class, 'stripeOrder'])->name('stripe.order');
 
-Route::redirect('/', '/all');
-Route::get('/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 // 404 for undefined routes
@@ -366,5 +365,6 @@ Route::get('/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController:
     return View::make('pages.error-pages.error-404');
 })->where('page', '.*');*/
 
-
-
+Route::redirect('/', '/products');
+Route::redirect('/products', '/products/all');
+Route::get('/products/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
