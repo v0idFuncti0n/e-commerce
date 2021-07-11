@@ -14,6 +14,7 @@
     <link href="{{ asset('e-commerce/css/mdb.min.css') }}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="{{ asset('e-commerce/css/style.min.css') }}" rel="stylesheet">
+    {!! Html::style('/css/toastr.css') !!}
 </head>
 
 <body>
@@ -219,10 +220,12 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('e-commerce/js/mdb.min.js') }}"></script>
 <!-- Initializations -->
+{!! Html::script('assets/js/toastr.min.js') !!}
+
 <script type="text/javascript">
     // Animations initialization
     new WOW().init();
-
+    toastr.options.progressBar = true;
 
     function addToCart() {
         let product_id = {{ $product->id }};
@@ -245,8 +248,12 @@
             url: "/cart/data/store/" + product_id,
             success: function (data) {
                 $('#cart-count').text(data.cartItems);
-                console.log(data);
+                toastr.success('Item has been added to cart');
+            },
+            error: function (data){
+                toastr.error('There was an error try again later');
             }
+
         });
     }
 

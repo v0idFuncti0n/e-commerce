@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -73,7 +74,8 @@ class ProductController extends Controller
         }
 
         $newProduct->save();
-
+        Session::flash('message','Product has been added');
+        Session::flash('alert-type','success');
         return response()->json([
             'success' => 200
         ]);
@@ -147,7 +149,8 @@ class ProductController extends Controller
         }
 
         $product->save();
-
+        Session::flash('message','Product has been updated');
+        Session::flash('alert-type','success');
         return response()->json([
             'success' => 200
         ]);

@@ -268,9 +268,9 @@
                                 <h6 class="my-0">{{ $product->name }}</h6>
 
                                 <span style="cursor: pointer;margin: 0 0;" class="badge badge-danger"
-                                        data-row_id="{{$product->rowId}}"
-                                        data-product_id="{{ $product->id }}" type="button"
-                                        onclick="decrementItem(event)"
+                                      data-row_id="{{$product->rowId}}"
+                                      data-product_id="{{ $product->id }}" type="button"
+                                      onclick="decrementItem(event)"
                                 ><i class="fas fa-minus"></i></span>
 
                                 <span id="{{$product->rowId}}" class="badge badge-primary">{{ $product->qty }}</span>
@@ -282,12 +282,16 @@
                                       onclick="incrementItem(event)"
                                 ><i class="fas fa-plus"></i></span>
 
-                                <span style="cursor: pointer;float: right" class="badge badge-danger"
+                                <span style="cursor: pointer;float: right; margin-top: 5px" class="badge badge-danger"
                                       type="button"
                                       data-row_id="{{$product->rowId}}"
                                       data-product_id="{{ $product->id }}"
                                       onclick="removeItem(event)"><i class="fa fa-trash"
-                                                                aria-hidden="true"></i></span>
+                                                                     aria-hidden="true"></i></span>
+
+                                <span style="margin-top: 5px; margin-left: 5px" class="badge badge-primary">{{ $product->options->color }}</span>
+
+                                <span style="margin-top: 5px; margin-left: 5px;" class="badge badge-primary">{{ $product->options->size }}</span>
                             </div>
                             <span class="text-muted">{{ $product->price }}$</span>
                         </li>
@@ -304,8 +308,7 @@
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
                         <strong
-                            id="total">{{ Session::has('coupon') ? Cart::total() - (Cart::total() * session()->get('coupon')['discount'] / 100) : Cart::total() }}
-                            $</strong>
+                            id="total">{{ Session::has('coupon') ? number_format(Cart::total(2, '.', '') - (Cart::total(2, '.', '') * session()->get('coupon')['discount'] / 100),2) : Cart::total(2, '.', '') }}$</strong>
                     </li>
                 </ul>
                 <!-- Cart -->
@@ -313,13 +316,20 @@
                 <!-- Promo code -->
                 <form class="card p-2">
                     <div class="input-group">
-                        <input id="coupon" type="text" class="form-control" placeholder="Promo code"
-                               aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary btn-md waves-effect m-0" type="button"
-                                    onclick="applyCoupon()">Redeem
-                            </button>
-                        </div>
+                        @if(!Session::has('coupon'))
+                            <input id="coupon" type="text" class="form-control" placeholder="Promo code"
+                                   aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+
+                                <button class="btn btn-secondary btn-md waves-effect m-0" type="button"
+                                        onclick="applyCoupon()">Redeem
+                                </button>
+                                @else
+                                    <button class="btn btn-secondary btn-block waves-effect m-0" type="button"
+                                            onclick="removeCoupon()">Remove Coupon
+                                    </button>
+                                @endif
+                            </div>
                     </div>
                 </form>
                 <!-- Promo code -->
@@ -456,13 +466,31 @@
         });
     }
 
+    function removeCoupon() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}",
+            },
+            url: "/product/remove-coupon",
+            success: function (data) {
+                console.log(data);
+                location.reload();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
     function incrementItem(event) {
         let button = $(event.currentTarget);
         let rowId = button.data('row_id');
         let productId = button.data('product_id');
         let span_count = $('#cart-count');
         let span_count_2 = $('#span_count_2');
-        let span_quantity = $("#"+rowId);
+        let span_quantity = $("#" + rowId);
         let total = $('#total');
 
         $.ajax({
@@ -491,7 +519,7 @@
         let productId = button.data('product_id');
         let span_count = $('#cart-count');
         let span_count_2 = $('#span_count_2');
-        let span_quantity = $("#"+rowId);
+        let span_quantity = $("#" + rowId);
         let total = $('#total');
 
         $.ajax({

@@ -69,12 +69,19 @@ class CartController extends Controller
         }
     }
 
+    public function removeCoupon(){
+        if(Session::has('coupon')){
+            Session::remove('coupon');
+        }
+        return response()->json(['success' => 200]);
+    }
+
     public function incrementItem($rowId, $id) {
         $product = Product::find($id);
         $qty = Cart::get($rowId)->qty;
         if($product->quantity != $qty){
             Cart::update($rowId, ++$qty);
-            $total = Session::has('coupon') ? Cart::total() - (Cart::total() * session()->get('coupon')['discount'] / 100) : Cart::total();
+            $total = Session::has('coupon') ? number_format(Cart::total() - (Cart::total() * session()->get('coupon')['discount'] / 100),2) : Cart::total();
             return response()->json(['qty' => Cart::get($rowId)->qty, 'total' => $total, 'count' => Cart::count()]);
         }else{
             return response()->json(['error' => 'qty passed'], 404);
@@ -86,7 +93,7 @@ class CartController extends Controller
         $qty = Cart::get($rowId)->qty;
         if($qty > 1){
             Cart::update($rowId, --$qty);
-            $total = Session::has('coupon') ? Cart::total() - (Cart::total() * session()->get('coupon')['discount'] / 100) : Cart::total();
+            $total = Session::has('coupon') ? number_format(Cart::total() - (Cart::total() * session()->get('coupon')['discount'] / 100),2) : Cart::total();
             return response()->json(['qty' => Cart::get($rowId)->qty, 'total' => $total, 'count' => Cart::count()]);
         }else{
             return response()->json(['error' => "qty can't be less than 0"], 404);

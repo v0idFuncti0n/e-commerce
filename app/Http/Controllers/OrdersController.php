@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,13 @@ class OrdersController extends Controller
         $order->shipped = true;
         $order->save();
         return redirect()->back();
+    }
+
+    public function downloadInvoicePDF(Request $request){
+        $order = Order::find($request->order);
+        $pdf = PDF::loadView('e-commerce.pdf-invoice',['order' => $order]);
+        return $pdf->download('invoice.pdf');
+        //return view('e-commerce.pdf-invoice', ['order' => $order]);
     }
 
 }

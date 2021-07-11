@@ -124,7 +124,11 @@
                     <td>{{$order->total}}$</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('show.orders.items',['id' => $order->id]) }}"><i class="fas fa-eye"></i> View</a>
-                        <button class="btn btn-danger" type="button"><i class="fas fa-download"></i> Invoice</button>
+                        <form style="display: inline" action="{{ route('admin.orders.invoice') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="order" value="{{ $order->id }}">
+                            <button class="btn btn-danger" type="submit"><i class="fas fa-download"></i> Invoice</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

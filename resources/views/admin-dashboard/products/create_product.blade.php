@@ -347,7 +347,6 @@
                     data.subCategories.forEach(function (subCategory) {
                         subCategoriesSelect.append(new Option(subCategory.name, subCategory.id));
                     });
-
                 }
             });
         }

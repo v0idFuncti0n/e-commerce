@@ -64,7 +64,7 @@ class StripeController extends Controller
             $orderItem->color = $cart->options->color;
             $orderItem->size = $cart->options->size;
             $orderItem->quantity = $cart->qty;
-            $orderItem->price = $cart->price;
+            $orderItem->price = $cart->price * $cart->qty;
 
             $orderItem->save();
 
@@ -75,8 +75,9 @@ class StripeController extends Controller
             Session::forget('coupon');
         }
         Cart::destroy();
-
-        return redirect()->to('/');
+        Session::flash('message', 'Order has been sent successfully');
+        Session::flash('alert-type', 'success');
+        return redirect()->to('/products/all');
 
     }
 }

@@ -14,6 +14,7 @@
     <link href="{{ asset('e-commerce/css/mdb.min.css') }}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="{{ asset('e-commerce/css/style.min.css') }}" rel="stylesheet">
+    {!! Html::style('/css/toastr.css') !!}
     <style type="text/css">
         html,
         body,
@@ -391,6 +392,7 @@
 <script type="text/javascript" src="{{ asset('e-commerce/js/bootstrap.min.js') }}"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('e-commerce/js/mdb.min.js') }}"></script>
+{!! Html::script('assets/js/toastr.min.js') !!}
 <!-- Initializations -->
 <script type="text/javascript">
     // Animations initialization
@@ -399,6 +401,32 @@
         $('#logout-form').submit();
     }
 
+</script>
+<script>
+    toastr.options.progressBar = true;
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    toastr.error('{{ $error }}');
+    @endforeach
+    @endif
+
+    @if(session()->has('message'))
+    let type = '{{ session()->get('alert-type', 'info') }}';
+    switch (type) {
+        case 'info':
+            toastr.info("{{ session()->get('message') }}");
+            break;
+        case 'success':
+            toastr.success("{{ session()->get('message') }}");
+            break;
+        case 'error':
+            toastr.error("{{ session()->get('message') }}");
+            break;
+        case 'warning':
+            toastr.warning("{{ session()->get('message') }}");
+            break;
+    }
+    @endif
 </script>
 </body>
 
