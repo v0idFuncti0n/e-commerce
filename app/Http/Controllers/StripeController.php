@@ -77,5 +77,6 @@ class StripeController extends Controller
         Cart::destroy();
 
         return redirect()->to('/');
+
     }
 }
