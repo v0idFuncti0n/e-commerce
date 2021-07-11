@@ -58,8 +58,8 @@
     <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-            <strong class="blue-text">MDB</strong>
+        <a class="navbar-brand waves-effect">
+            <strong class="blue-text">Ecommerce</strong>
         </a>
 
         <!-- Collapse -->
@@ -73,21 +73,10 @@
 
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link waves-effect" href="#">Home
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{{ route('home') }}">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-                       target="_blank">Free download</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-                        tutorials</a>
                 </li>
             </ul>
 
@@ -104,16 +93,19 @@
                 @auth
                     <li class="mt-2 nav-item dropdown">
                         <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <img class="mx-auto rounded-circle" style="height: 20%; width:20%" src="{{ Auth::user()->profile_photo_url }}">
+                            <img class="mx-auto rounded-circle" style="height: 20%; width:20%"
+                                 src="{{ Auth::user()->profile_photo_url }}">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             @role('admin')
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                       href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                             @endrole
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('show.orders')}}">My
+                                    Orders</a></li>
+                            </li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -160,9 +152,8 @@
 
                     <!--Card content-->
                     <form id="payment-form" class="card-body" action="{{ route('stripe.order') }}" method="POST">
-                        @csrf
-
-                        <!--Grid row-->
+                    @csrf
+                    <!--Grid row-->
                         <div class="row">
 
                             <!--Grid column-->
@@ -170,7 +161,7 @@
 
                                 <!--firstName-->
                                 <div class="md-form ">
-                                    <input type="text" id="firstName" class="form-control">
+                                    <input type="text" id="firstName" class="form-control" name="firstName" required>
                                     <label for="firstName" class="">First name</label>
                                 </div>
 
@@ -182,7 +173,7 @@
 
                                 <!--lastName-->
                                 <div class="md-form">
-                                    <input type="text" id="lastName" class="form-control">
+                                    <input type="text" id="lastName" class="form-control" name="lastName" required>
                                     <label for="lastName" class="">Last name</label>
                                 </div>
 
@@ -192,72 +183,43 @@
                         </div>
                         <!--Grid row-->
 
-                        <!--Username-->
-                        <div class="md-form input-group pl-0 mb-5">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" class="form-control py-0" placeholder="Username" aria-describedby="basic-addon1">
-                        </div>
-
                         <!--email-->
                         <div class="md-form mb-5">
-                            <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
+                            <input type="text" id="email" name="email" class="form-control"
+                                   placeholder="youremail@example.com"
+                                   value="{{ \Illuminate\Support\Facades\Auth::check() ? \Illuminate\Support\Facades\Auth::user()->email : "" }}"
+                                   required>
                             <label for="email" class="">Email (optional)</label>
                         </div>
 
                         <!--address-->
-                        <div class="md-form mb-5">
-                            <input type="text" id="address" class="form-control" placeholder="1234 Main St">
+                        <div class="md-form mb-2">
+                            <input type="text" id="address" class="form-control" placeholder="1234 Main St"
+                                   name="address" required>
                             <label for="address" class="">Address</label>
                         </div>
 
-                        <!--address-2-->
-                        <div class="md-form mb-5">
-                            <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">
-                            <label for="address-2" class="">Address 2 (optional)</label>
-                        </div>
-
-                        <!--Grid row-->
                         <div class="row">
 
                             <!--Grid column-->
-                            <div class="col-lg-4 col-md-12 mb-4">
+                            <div class="col-md-6 mb-2">
 
-                                <label for="country">Country</label>
-                                <select class="custom-select d-block w-100" id="country" required>
-                                    <option value="">Choose...</option>
-                                    <option>United States</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid country.
+                                <!--firstName-->
+                                <div class="md-form ">
+                                    <input type="tel" id="phone" class="form-control" name="phone" required>
+                                    <label for="phone" class="">Phone</label>
                                 </div>
 
                             </div>
                             <!--Grid column-->
 
                             <!--Grid column-->
-                            <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="col-md-6 mb-2">
 
-                                <label for="state">State</label>
-                                <select class="custom-select d-block w-100" id="state" required>
-                                    <option value="">Choose...</option>
-                                    <option>California</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please provide a valid state.
-                                </div>
-
-                            </div>
-                            <!--Grid column-->
-
-                            <!--Grid column-->
-                            <div class="col-lg-4 col-md-6 mb-4">
-
-                                <label for="zip">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
+                                <!--lastName-->
+                                <div class="md-form">
+                                    <input type="tel" id="zip" class="form-control" name="zip" required>
+                                    <label for="zip" class="">Zip Code</label>
                                 </div>
 
                             </div>
@@ -268,17 +230,17 @@
 
                         <hr>
 
-                            <div class="form-row">
-                                <label for="card-element">
-                                    Credit or debit card
-                                </label>
-                                <div id="card-element">
-                                    <!-- A Stripe Element will be inserted here. -->
-                                </div>
-
-                                <!-- Used to display Element errors. -->
-                                <div id="card-errors" role="alert"></div>
+                        <div class="form-row">
+                            <label for="card-element">
+                                Credit or debit card
+                            </label>
+                            <div id="card-element">
+                                <!-- A Stripe Element will be inserted here. -->
                             </div>
+
+                            <!-- Used to display Element errors. -->
+                            <div id="card-errors" role="alert"></div>
+                        </div>
                         <hr class="mb-4">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
                     </form>
@@ -295,24 +257,55 @@
                 <!-- Heading -->
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">{{ Cart::count() }}</span>
+                    <span id="span_count_2" class="badge badge-secondary badge-pill">{{ Cart::count() }}</span>
                 </h4>
 
                 <!-- Cart -->
                 <ul class="list-group mb-3 z-depth-1">
                     @foreach($cartProducts as $product)
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">{{ $product->name }}</h6>
-                            <span class="badge red">{{ $product->qty }}</span>
-                            <span class="badge white"><button id="remove-item" type="button" data-row_id="{{$product->rowId}}" data-product_id="{{ $product->id }}" onclick="removeItem()"><i class="fa fa-trash" aria-hidden="true"></i></button></span>
-                        </div>
-                        <span class="text-muted">{{ $product->price }}$</span>
-                    </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">{{ $product->name }}</h6>
+
+                                <span style="cursor: pointer;margin: 0 0;" class="badge badge-danger"
+                                        data-row_id="{{$product->rowId}}"
+                                        data-product_id="{{ $product->id }}" type="button"
+                                        onclick="decrementItem(event)"
+                                ><i class="fas fa-minus"></i></span>
+
+                                <span id="{{$product->rowId}}" class="badge badge-primary">{{ $product->qty }}</span>
+
+                                <span style="cursor: pointer;" class="badge badge-success"
+                                      type="button"
+                                      data-row_id="{{$product->rowId}}"
+                                      data-product_id="{{ $product->id }}"
+                                      onclick="incrementItem(event)"
+                                ><i class="fas fa-plus"></i></span>
+
+                                <span style="cursor: pointer;float: right" class="badge badge-danger"
+                                      type="button"
+                                      data-row_id="{{$product->rowId}}"
+                                      data-product_id="{{ $product->id }}"
+                                      onclick="removeItem(event)"><i class="fa fa-trash"
+                                                                aria-hidden="true"></i></span>
+                            </div>
+                            <span class="text-muted">{{ $product->price }}$</span>
+                        </li>
                     @endforeach
+                    @if(Session::has('coupon'))
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <div class="text-success">
+                                <h6 class="my-0">Promo code</h6>
+                                <small>{{session()->get('coupon')['coupon']}}</small>
+                            </div>
+                            <span class="text-success">-{{session()->get('coupon')['discount']}}%</span>
+                        </li>
+                    @endif
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
-                        <strong>{{ Cart::total() }}</strong>
+                        <strong
+                            id="total">{{ Session::has('coupon') ? Cart::total() - (Cart::total() * session()->get('coupon')['discount'] / 100) : Cart::total() }}
+                            $</strong>
                     </li>
                 </ul>
                 <!-- Cart -->
@@ -320,9 +313,12 @@
                 <!-- Promo code -->
                 <form class="card p-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input id="coupon" type="text" class="form-control" placeholder="Promo code"
+                               aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Redeem</button>
+                            <button class="btn btn-secondary btn-md waves-effect m-0" type="button"
+                                    onclick="applyCoupon()">Redeem
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -340,56 +336,7 @@
 
 <!--Footer-->
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <!--Call to action-->
-    <div class="pt-4">
-        <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">Download MDB
-            <i class="fas fa-download ml-2"></i>
-        </a>
-        <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start free tutorial
-            <i class="fas fa-graduation-cap ml-2"></i>
-        </a>
-    </div>
-    <!--/.Call to action-->
-
     <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-        <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-        </a>
-
-        <a href="https://twitter.com/MDBootstrap" target="_blank">
-            <i class="fab fa-twitter mr-3"></i>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-            <i class="fab fa-youtube mr-3"></i>
-        </a>
-
-        <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-            <i class="fab fa-google-plus-g mr-3"></i>
-        </a>
-
-        <a href="https://dribbble.com/mdbootstrap" target="_blank">
-            <i class="fab fa-dribbble mr-3"></i>
-        </a>
-
-        <a href="https://pinterest.com/mdbootstrap" target="_blank">
-            <i class="fab fa-pinterest mr-3"></i>
-        </a>
-
-        <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-            <i class="fab fa-github mr-3"></i>
-        </a>
-
-        <a href="http://codepen.io/mdbootstrap/" target="_blank">
-            <i class="fab fa-codepen mr-3"></i>
-        </a>
-    </div>
-    <!-- Social icons -->
-
     <!--Copyright-->
     <div class="footer-copyright py-3">
         © 2019 Copyright:
@@ -434,10 +381,10 @@
     card.mount('#card-element');
 
     let form = $('#payment-form');
-    form.on('submit', function(event) {
+    form.on('submit', function (event) {
         event.preventDefault();
 
-        stripe.createToken(card).then(function(result) {
+        stripe.createToken(card).then(function (result) {
             if (result.error) {
                 // Inform the customer that there was an error.
                 var errorElement = document.getElementById('card-errors');
@@ -462,8 +409,9 @@
 
         form.submit();
     }
-    function removeItem() {
-        let button = $('#remove-item');
+
+    function removeItem(event) {
+        let button = $(event.currentTarget);
         let rowId = button.data('row_id');
         let productId = button.data('product_id');
 
@@ -473,8 +421,8 @@
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
-            url: "/cart/data/remove/"+rowId+"/"+productId,
-            success: function(data){
+            url: "/cart/data/remove/" + rowId + "/" + productId,
+            success: function (data) {
                 location.reload();
                 //$('#cart-count').text(data.cartItems);
             }
@@ -485,6 +433,87 @@
     function logout() {
         $('#logout-form').submit();
     }
+
+    function applyCoupon() {
+        let coupon = $('#coupon').val();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}",
+            },
+            data: {
+                'coupon': coupon
+            },
+            url: "/product/apply-coupon",
+            success: function (data) {
+                console.log(data);
+                location.reload();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function incrementItem(event) {
+        let button = $(event.currentTarget);
+        let rowId = button.data('row_id');
+        let productId = button.data('product_id');
+        let span_count = $('#cart-count');
+        let span_count_2 = $('#span_count_2');
+        let span_quantity = $("#"+rowId);
+        let total = $('#total');
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            url: "/cart/incrementItem/" + rowId + "/" + productId,
+            success: function (data) {
+                //location.reload();
+                span_count.text(data.count);
+                span_count_2.text(data.count);
+                span_quantity.text(data.qty);
+                total.text(data.total + "$");
+            },
+            error: function (data) {
+                //console.log(data);
+            }
+        });
+    }
+
+    function decrementItem(event) {
+        let button = $(event.currentTarget);
+        let rowId = button.data('row_id');
+        let productId = button.data('product_id');
+        let span_count = $('#cart-count');
+        let span_count_2 = $('#span_count_2');
+        let span_quantity = $("#"+rowId);
+        let total = $('#total');
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            url: "/cart/decrementItem/" + rowId + "/" + productId,
+            success: function (data) {
+                //location.reload();
+                span_count.text(data.count);
+                span_count_2.text(data.count);
+                span_quantity.text(data.qty);
+                total.text(data.total + "$");
+            },
+            error: function (data) {
+                //console.log(data);
+            }
+        });
+    }
+
 
 </script>
 

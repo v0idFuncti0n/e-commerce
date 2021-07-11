@@ -47,7 +47,6 @@ class ProductController extends Controller
         $newProduct->size = $request->size;
         $newProduct->selling_price = $request->selling_price;
         $newProduct->discount_price = $request->discount_price;
-        $newProduct->video_link = $request->video_link;
         $newProduct->status = 1;
 
         Category::find($request->category)->products()->save($newProduct);
@@ -117,7 +116,6 @@ class ProductController extends Controller
         $product->size = $request->size;
         $product->selling_price = $request->selling_price;
         $product->discount_price = $request->discount_price;
-        $product->video_link = $request->video_link;
         $product->status = 1;
 
         Category::find($request->category)->products()->save($product);
@@ -187,5 +185,12 @@ class ProductController extends Controller
             );
         }
         return response()->json($images);
+    }
+
+    public function toggleStatus($id){
+        $product = Product::find($id);
+        $product->status == 1 ? $product->status = 0 : $product->status = 1;
+        $product->save();
+        return redirect()->route('admin.products');
     }
 }

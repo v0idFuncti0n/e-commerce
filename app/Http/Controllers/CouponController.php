@@ -28,6 +28,7 @@ class CouponController extends Controller
         $data = array();
         $data['coupon'] = $request->coupon;
         $data['discount'] = $request->discount;
+        $data['validity_days'] = $request->validity;
         DB::table('coupons')->insert($data);
         $notification = array(
             'message' => 'Coupon Inserted Successfully',
@@ -60,6 +61,7 @@ class CouponController extends Controller
 
             $coupon->coupon = $request->coupon;
             $coupon->discount = $request->discount;
+            $coupon->validity_days = $request->validity;
         }
         $coupon->save();
         $notification = array(

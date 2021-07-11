@@ -163,17 +163,6 @@
                     <div id="drag-drop-area"></div>
                 </div>
                 <br>
-                <div class="from-row">
-                    <label for="video_link">Video Link</label>
-                    <input class="form-control form-control-lg" type="url" name="video_link" id="video_link"
-                           value="{{ $product->video_link }}">
-                    <div id="video_linkError" style="display: none">
-                        <small class="text-danger">
-                            Video Link is required and should be less than 255 characters.
-                        </small>
-                    </div>
-                </div>
-                <br>
                 <button class="btn btn-warning btn-lg btn-block" type="button" id="btn-submit">Edit Product</button>
             </form>
         </div>
@@ -191,7 +180,6 @@
         let size = $('#size');
         let sellingPrice = $('#selling_price');
         let discountPrice = $('#discount_price');
-        let videoLink = $('#video_link');
 
 
         // Quill js
@@ -305,12 +293,6 @@
             } else {
                 hideError('#discount_price');
             }
-            if (videoLink.val() === '' || videoLink.val().length > 255) {
-                hasErrors = true;
-                showError('#video_link');
-            } else {
-                hideError('#video_link');
-            }
 
             if (hasErrors) {
                 scrollTop();
@@ -347,7 +329,7 @@
             debug: true,
             autoProceed: false,
             restrictions: {
-                maxFileSize: 1000000,
+                maxFileSize: 2000000,
                 maxNumberOfFiles: 4,
                 minNumberOfFiles: 1,
                 allowedFileTypes: ['image/*']

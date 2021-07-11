@@ -70,12 +70,18 @@ Route::group(['middleware' => ['is_authenticated', 'role:admin'], 'prefix' => 'a
         Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('admin.products.delete');
         Route::post('/edit/{id}', [ProductController::class, 'edit'])->name('admin.products.edit');
         Route::post('/update/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::post('/toggle-status/{id}', [ProductController::class, 'toggleStatus'])->name('admin.products.status');
         Route::get('/get-product-images/{id}', [ProductController::class, 'getImages'])->name('admin.products.images');
     });
 
     // coupon
     Route::get('/coupons', [CouponController::class, 'Coupon'])->name('admin.coupons');
     Route::post('/coupons/store', [CouponController::class, 'StoreCoupon'])->name('admin.coupon.store');
+
+    //order
+    Route::get('/orders', [\App\Http\Controllers\OrdersController::class, 'adminShowAllOrders'])->name('admin.orders');
+    Route::get('/orders/orders-items/{id}', [\App\Http\Controllers\OrdersController::class, 'adminShowOrdersItems'])->name('admin.orders.items');
+    Route::post('/orders/ship/{id}', [\App\Http\Controllers\OrdersController::class, 'shipOrder'])->name('admin.orders.ship');
 
     // default template routes
     Route::group(['prefix' => 'basic-ui'], function () {
@@ -350,14 +356,20 @@ Route::delete('/coupons/delete/{id}', [CouponController::class, 'deletecoupon'])
 Route::put('/coupons/update/{id}', [CouponController::class, 'EditCoupon'])->name('admin.coupon.update');
 
 Route::get('/product/{product}', [\App\Http\Controllers\HomeController::class, 'showProduct'])->name('showProduct');
+Route::post('/product', [\App\Http\Controllers\HomeController::class, 'showSearchProduct'])->name('showSearchProduct');
 
 Route::post('/cart/data/store/{id}', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
 Route::post('/cart/data/remove/{rowId}/{productId}', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 Route::get('/cart/showCart', [\App\Http\Controllers\HomeController::class, 'showCart'])->name('showCart');
+Route::post('/cart/incrementItem/{rowId}/{id}', [\App\Http\Controllers\CartController::class, 'incrementItem'])->name('incrementItem');
+Route::post('/cart/decrementItem/{rowId}/{id}', [\App\Http\Controllers\CartController::class, 'decrementItem'])->name('decrementItem');
 
 Route::post('stripe/order', [\App\Http\Controllers\StripeController::class, 'stripeOrder'])->name('stripe.order');
 
+Route::post('/product/apply-coupon', [\App\Http\Controllers\CartController::class, 'applyCoupon'])->name('apply-coupon');
 
+Route::get('/my-orders', [\App\Http\Controllers\OrdersController::class, 'showOrders'])->name('show.orders');
+Route::get('/my-orders/order-items/{id}', [\App\Http\Controllers\OrdersController::class, 'showOrdersItems'])->name('show.orders.items');
 
 
 // 404 for undefined routes
@@ -368,3 +380,4 @@ Route::post('stripe/order', [\App\Http\Controllers\StripeController::class, 'str
 Route::redirect('/', '/products');
 Route::redirect('/products', '/products/all');
 Route::get('/products/{category?}/{subCategory?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

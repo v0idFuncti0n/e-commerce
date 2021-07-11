@@ -4,55 +4,32 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Coupon
-                    <button type="button" class="btn btn-primary btn-fw float-right" data-toggle="modal"
-                            data-target="#add-category-modal">New Coupn
-                    </button>
-                </h4>
                 <p class="card-description"></p>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                         <tr>
-                            <th> Id</th>
-                            <th> Coupon Code</th>
-                            <th> coupon Percentage</th>
-                            <th> Valid</th>
-                            <th> Action</th>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>Payment</th>
+                            <th>Order</th>
+                            <th>Total</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($coupon as $key=>$row)
+                        @foreach($orders as $order)
                             <tr>
+                                <td>{{$order->id}}</td>
+                                <td>{{\Carbon\Carbon::parse($order->created_at)->format('Y-m-d H:i')}}</td>
+                                <td>Stripe</td>
+                                <td><span class="badge {{$order->shipped ? 'badge-success' : 'badge-secondary'}}">{{$order->shipped ? 'Shipped' : 'Pending'}}</span></td>
+                                <td>{{$order->total}}$</td>
                                 <td>
-                                    {{ $key +1 }}
-                                </td>
-                                <td>
-                                    {{ $row->coupon }}
-                                </td>
-                                <td>
-                                    {{ $row->discount }} %
-                                </td>
-                                <td>
-                                    @if(\Carbon\Carbon::now() < \Carbon\Carbon::createFromDate($row->created_at)->addDays($row->validity_days))
-                                        <span class="badge badge-success">Valid</span>
-                                    @else
-                                        <span class="badge badge-danger">Invalid</span>
-                                    @endif
-                                </td>
-                                <td class="dt">
-                                    <button type="button" class="btn btn-warning btn-fw btn-edit" data-toggle="modal"
-                                            data-target="#edit-coupon-modal"
-                                            data-coupon_id="{{ $row->id }}"
-                                            data-coupon_name="{{ $row->coupon }}"
-                                            data-disc_name="{{ $row->discount }}">Edit
-                                    </button>
-                                    <form style="display : inline;"
-                                          action="{{ route('admin.coupon.delete', ['id' => $row->id]) }}"
-                                          method="POST">
+                                    <a class="btn btn-primary" href="{{ route('admin.orders.items',['id' => $order->id]) }}"><i class="fas fa-eye"></i> View</a>
+                                    <form style="display : inline;" action="{{ route('admin.orders.ship',['id' => $order->id]) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
+                                        <button class="btn btn-danger" type="submit"><i class="fas fa-download"></i> Ship</button>
                                     </form>
                                 </td>
                             </tr>
@@ -80,17 +57,12 @@
                         <div class="form-group">
                             <label for="category_name">Coupon code :</label>
                             <input type="text" class="form-control" name="coupon"
-                                   placeholder="Coupon Code" required>
+                                   placeholder="Coupon Code">
                         </div>
                         <div class="form-group">
                             <label for="category_name">Coupon discount (%):</label>
                             <input type="text" class="form-control" name="discount"
-                                   placeholder="Coupon discount" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="category_name">Validity:</label>
-                            <input type="number" class="form-control" name="validity"
-                                   placeholder="Validity" min="1" required>
+                                   placeholder="Coupon discount">
                         </div>
                     </form>
                 </div>
@@ -114,8 +86,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="edit-submit-form" action="{{ route('admin.coupon.update', ['id' => ':id']) }}"
-                          method="POST">
+                    <form id="edit-submit-form" action="{{ route('admin.coupon.update', ['id' => ':id']) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -127,11 +98,6 @@
                             <label for="disc_name">New Percentage :</label>
                             <input type="text" class="form-control" name="discount"
                                    placeholder="%">
-                        </div>
-                        <div class="form-group">
-                            <label for="category_name">Validity:</label>
-                            <input type="number" class="form-control" name="validity"
-                                   placeholder="Validity" min="1">
                         </div>
                     </form>
                 </div>

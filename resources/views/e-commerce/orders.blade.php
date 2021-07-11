@@ -14,6 +14,7 @@
     <link href="{{ asset('e-commerce/css/mdb.min.css') }}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="{{ asset('e-commerce/css/style.min.css') }}" rel="stylesheet">
+    {!! Html::style('/css/datatables.css') !!}
 </head>
 
 <body>
@@ -68,8 +69,7 @@
                             <li role="presentation"><a role="menuitem" tabindex="-1"
                                                        href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                             @endrole
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('show.orders')}}">My
-                                    Orders</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('show.orders')}}">My Orders</a></li>
                             </li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation">
@@ -100,104 +100,44 @@
 <!-- Navbar -->
 
 <!--Main layout-->
-<main class="mt-5 pt-4" style="margin-bottom: 8rem">
+<main class="mt-5 pt-4" style="margin-bottom: 25rem">
     <div class="container dark-grey-text mt-5">
-        <h1 class="ml-5 mb-5">{{$product->title}}</h1>
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-
-            <!--Grid column-->
-            <div class="col-md-6 mb-4">
-                <div>
-                    <img id="main-image" style="width: 100%;height: 25vw;object-fit: cover;"
-                         src="{{ asset('storage/'.$product->images()->first()->path)}}" class="img-fluid" alt="">
-                </div>
-                <div class="mt-5">
-                    @foreach($product->images as $image)
-                        <img class="ml-2 mr-2" style="width: 40px;height: 40px;border: 1px solid black;"
-                             src="{{asset('storage/'.$image->path)}}" alt="" onclick="setMainImage(this.src)">
-                    @endforeach
-                </div>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-6 mb-4">
-
-                <!--Content-->
-                <div class="p-4">
-
-                    {{--<div class="mb-3">
-                        <a href="">
-                            <span class="badge purple mr-1">Category 2</span>
-                        </a>
-                        <a href="">
-                            <span class="badge blue mr-1">New</span>
-                        </a>
-                        <a href="">
-                            <span class="badge red mr-1">Bestseller</span>
-                        </a>
-                    </div>--}}
-
-                    <p class="lead">
-              <span class="mr-1">
-                <del>{{ $product->selling_price }}$</del>
-              </span>
-                        <span>{{ $product->discount_price }}$</span>
-                    </p>
-
-                    <p class="lead font-weight-bold">Description</p>
-
-                    <p>{!! $product->description !!}</p>
-
-                    <form class="d-flex justify-content-left form-group">
-                        <!-- Default input -->
-                        <div class="form-group mb-2">
-                            <label for="quantity">Quantity :</label>
-                            <input id="quantity" type="number" value="1" aria-label="Search" class="form-control"
-                                   style="width: 100px" min="1" max="{{ $product->quantity }}">
-                        </div>
-                        <div class="form-group ml-3">
-                            <label for="color">Color :</label>
-                            <select class="form-control" id="color" name="color">
-                                @foreach(explode(',', $product->color) as $color)
-                                    <option value="{{$color}}">{{$color}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group ml-3">
-                            <label for="size">Size :</label>
-                            <select class="form-control" id="size" name="size">
-                                @foreach(explode(',', $product->size) as $size)
-                                    <option value="{{$size}}">{{$size}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                    </form>
-                    <button class="btn btn-primary btn-md my-0 p" type="button" onclick="addToCart()">Add to
-                        cart
-                        <i class="fas fa-shopping-cart ml-1"></i>
-                    </button>
-
-                </div>
-                <!--Content-->
-
-            </div>
-            <!--Grid column-->
-
-        </div>
-        <!--Grid row-->
-
+        <h1 class="mb-5">My Orders:</h1>
+        <table id="orders" class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Payment</th>
+                    <th>Order</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($orders as $order)
+                <tr>
+                    <td>{{$order->id}}</td>
+                    <td>{{\Carbon\Carbon::parse($order->created_at)->format('Y-m-d H:i')}}</td>
+                    <td>Stripe</td>
+                    <td><span class="badge {{$order->shipped ? 'badge-success' : 'badge-secondary'}}">{{$order->shipped ? 'Shipped' : 'Pending'}}</span></td>
+                    <td>{{$order->total}}$</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ route('show.orders.items',['id' => $order->id]) }}"><i class="fas fa-eye"></i> View</a>
+                        <button class="btn btn-danger" type="button"><i class="fas fa-download"></i> Invoice</button>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 </main>
 <!--Main layout-->
 
 <!--Footer-->
-<footer class="page-footer text-center font-small mt-5 wow fadeIn">
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-
-    <hr class="my-5">
+    <hr class="my-4">
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
@@ -218,47 +158,16 @@
 <script type="text/javascript" src="{{ asset('e-commerce/js/bootstrap.min.js') }}"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('e-commerce/js/mdb.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/datatables.js') }}"></script>
 <!-- Initializations -->
 <script type="text/javascript">
     // Animations initialization
     new WOW().init();
-
-
-    function addToCart() {
-        let product_id = {{ $product->id }};
-        let quantity = $('#quantity').val();
-        let color = $('#color').val();
-        let size = $('#size').val();
-
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data: {
-                product_id: product_id,
-                quantity: quantity,
-                color: color,
-                size: size
-            },
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            url: "/cart/data/store/" + product_id,
-            success: function (data) {
-                $('#cart-count').text(data.cartItems);
-                console.log(data);
-            }
+    $(document).ready(function () {
+        $('#orders').DataTable({
+            "order": [[ 1, "desc" ]]
         });
-    }
-
-    function logout() {
-        $('#logout-form').submit();
-    }
-
-    function setMainImage(src){
-        let main_image = $('#main-image');
-        main_image.attr('src', src);
-    }
-
+    });
 </script>
 </body>
 

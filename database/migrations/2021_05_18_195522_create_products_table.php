@@ -28,7 +28,6 @@ class CreateProductsTable extends Migration
             $table->string('size');
             $table->double('selling_price', 10, 2);
             $table->double('discount_price', 10, 2)->nullable();
-            $table->string('video_link')->nullable();
             $table->string('status');
 
             $table->timestamps();

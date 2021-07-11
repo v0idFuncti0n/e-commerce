@@ -4,57 +4,41 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Coupon
-                    <button type="button" class="btn btn-primary btn-fw float-right" data-toggle="modal"
-                            data-target="#add-category-modal">New Coupn
-                    </button>
-                </h4>
                 <p class="card-description"></p>
+                <div class="p-3 mb-2 bg-primary text-white">First Name: {{ $order->firstName }}</div>
+                <div class="p-3 mb-2 bg-primary text-white">Last Name: {{ $order->lastName }}</div>
+                <div class="p-3 mb-2 bg-primary text-white">Email: {{ $order->email }}</div>
+                <div class="p-3 mb-2 bg-primary text-white">Phone: {{ $order->phone }}</div>
+                <div class="p-3 mb-2 bg-primary text-white">Address: {{ $order->adress }}</div>
+                <div class="p-3 mb-2 bg-primary text-white">Zip: {{ $order->zip }}</div>
+                <div class="p-3 mb-2 bg-primary text-white">Total: <span style="color: black"><strong>{{ $order->total }}$</strong></span></div>
+                <div class="p-3 mb-2 bg-primary text-white">Quantity: {{ $order->quantity }}</div>
+
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                         <tr>
-                            <th> Id</th>
-                            <th> Coupon Code</th>
-                            <th> coupon Percentage</th>
-                            <th> Valid</th>
-                            <th> Action</th>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Product Id</th>
+                            <th>Product Color</th>
+                            <th>Product Size</th>
+                            <th>Product Quantity</th>
+                            <th>Product Price</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($coupon as $key=>$row)
+                        @foreach($orderItems as $orderItem)
                             <tr>
-                                <td>
-                                    {{ $key +1 }}
-                                </td>
-                                <td>
-                                    {{ $row->coupon }}
-                                </td>
-                                <td>
-                                    {{ $row->discount }} %
-                                </td>
-                                <td>
-                                    @if(\Carbon\Carbon::now() < \Carbon\Carbon::createFromDate($row->created_at)->addDays($row->validity_days))
-                                        <span class="badge badge-success">Valid</span>
-                                    @else
-                                        <span class="badge badge-danger">Invalid</span>
-                                    @endif
-                                </td>
-                                <td class="dt">
-                                    <button type="button" class="btn btn-warning btn-fw btn-edit" data-toggle="modal"
-                                            data-target="#edit-coupon-modal"
-                                            data-coupon_id="{{ $row->id }}"
-                                            data-coupon_name="{{ $row->coupon }}"
-                                            data-disc_name="{{ $row->discount }}">Edit
-                                    </button>
-                                    <form style="display : inline;"
-                                          action="{{ route('admin.coupon.delete', ['id' => $row->id]) }}"
-                                          method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
-                                    </form>
-                                </td>
+                                <td>{{ $orderItem->id }}</td>
+                                <td><img style="width: 30%;height: 30%" src="{{ '/storage/'.App\Models\Product::find($orderItem->product_id)->images()->first()->path }}" alt="{{ App\Models\Product::find($orderItem->product_id)->name }}"></td>
+                                <td>{{ App\Models\Product::find($orderItem->product_id)->title }}</td>
+                                <td>{{ App\Models\Product::find($orderItem->product_id)->id }}</td>
+                                <td>{{ $orderItem->color }}</td>
+                                <td>{{ $orderItem->size }}</td>
+                                <td>{{ $orderItem->quantity }}</td>
+                                <td>{{ $orderItem->price }}$</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -80,17 +64,12 @@
                         <div class="form-group">
                             <label for="category_name">Coupon code :</label>
                             <input type="text" class="form-control" name="coupon"
-                                   placeholder="Coupon Code" required>
+                                   placeholder="Coupon Code">
                         </div>
                         <div class="form-group">
                             <label for="category_name">Coupon discount (%):</label>
                             <input type="text" class="form-control" name="discount"
-                                   placeholder="Coupon discount" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="category_name">Validity:</label>
-                            <input type="number" class="form-control" name="validity"
-                                   placeholder="Validity" min="1" required>
+                                   placeholder="Coupon discount">
                         </div>
                     </form>
                 </div>
@@ -114,8 +93,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="edit-submit-form" action="{{ route('admin.coupon.update', ['id' => ':id']) }}"
-                          method="POST">
+                    <form id="edit-submit-form" action="{{ route('admin.coupon.update', ['id' => ':id']) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -127,11 +105,6 @@
                             <label for="disc_name">New Percentage :</label>
                             <input type="text" class="form-control" name="discount"
                                    placeholder="%">
-                        </div>
-                        <div class="form-group">
-                            <label for="category_name">Validity:</label>
-                            <input type="number" class="form-control" name="validity"
-                                   placeholder="Validity" min="1">
                         </div>
                     </form>
                 </div>

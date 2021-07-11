@@ -17,6 +17,7 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->string('coupon');
             $table->string('discount');
+            $table->int('validity_days');
             $table->timestamps();
         });
     }

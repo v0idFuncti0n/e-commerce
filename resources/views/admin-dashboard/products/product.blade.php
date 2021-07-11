@@ -44,8 +44,9 @@
                                     {{ $product->title }}
                                 </td>
                                 <td>
-                                    <img src="{{ asset('/storage/'.$product->images->where('is_thumbnail', 1)->first()->path) }}"
-                                         alt="{{ $product->name }}">
+                                    <img
+                                        src="{{ asset('/storage/'.$product->images->where('is_thumbnail', 1)->first()->path) }}"
+                                        alt="{{ $product->name }}">
                                 </td>
                                 <td>
                                     {{ $product->category->name }}
@@ -58,7 +59,11 @@
                                 </td>
                                 <td>
                                     @if($product->status == 1)
-                                        <span class="badge badge-success">Active</span>
+                                        @if($product->quantity > 0)
+                                            <span class="badge badge-success">Active</span>
+                                        @else
+                                            <span class="badge badge-danger">Out of stock</span>
+                                        @endif
                                     @else
                                         <span class="badge badge-danger">Inactive</span>
                                     @endif
@@ -76,6 +81,10 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-danger btn-fw btn-delete">Delete</button>
+                                    </form>
+                                    <form style="display : inline;" action="{{ route('admin.products.status', ['id' => $product->id]) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-fw btn-secondary">{{ $product->status == 1 ? "Inactive" : "Active" }}</button>
                                     </form>
                                 </td>
                             </tr>

@@ -52,8 +52,8 @@
     <div class="container">
 
         <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-            <strong class="blue-text">MDB</strong>
+        <a class="navbar-brand waves-effect">
+            <strong class="blue-text">Ecommerce</strong>
         </a>
 
         <!-- Collapse -->
@@ -68,20 +68,9 @@
             <!-- Left -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link waves-effect" href="#">Home
+                    <a class="nav-link waves-effect" href="{{ route('home') }}">Home
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-                       target="_blank">Free download</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-                        tutorials</a>
                 </li>
             </ul>
 
@@ -106,8 +95,7 @@
                                 @role('admin')
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                                 @endrole
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('show.orders')}}">My Orders</a></li>
                                 <li role="presentation" class="divider"></li>
                                 <li role="presentation">
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -160,23 +148,12 @@
                     <!-- Content -->
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">
-                            <strong>Learn Bootstrap 4 with MDB</strong>
+                            <strong>E-commerce</strong>
                         </h1>
 
                         <p>
-                            <strong>Best & free guide of responsive web design</strong>
+                            <strong>Buy highest quality with lowest price.</strong>
                         </p>
-
-                        <p class="mb-4 d-none d-md-block">
-                            <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                written versions
-                                available. Create your own, stunning website.</strong>
-                        </p>
-
-                        <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                            free tutorial
-                            <i class="fas fa-graduation-cap ml-2"></i>
-                        </a>
                     </div>
                     <!-- Content -->
 
@@ -197,23 +174,12 @@
                     <!-- Content -->
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">
-                            <strong>Learn Bootstrap 4 with MDB</strong>
+                            <strong>E-commerce</strong>
                         </h1>
 
                         <p>
-                            <strong>Best & free guide of responsive web design</strong>
+                            <strong>Buy highest quality with lowest price.</strong>
                         </p>
-
-                        <p class="mb-4 d-none d-md-block">
-                            <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                written versions
-                                available. Create your own, stunning website.</strong>
-                        </p>
-
-                        <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                            free tutorial
-                            <i class="fas fa-graduation-cap ml-2"></i>
-                        </a>
                     </div>
                     <!-- Content -->
 
@@ -234,23 +200,12 @@
                     <!-- Content -->
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">
-                            <strong>Learn Bootstrap 4 with MDB</strong>
+                            <strong>E-commerce</strong>
                         </h1>
 
                         <p>
-                            <strong>Best & free guide of responsive web design</strong>
+                            <strong>Buy highest quality with lowest price.</strong>
                         </p>
-
-                        <p class="mb-4 d-none d-md-block">
-                            <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                                written versions
-                                available. Create your own, stunning website.</strong>
-                        </p>
-
-                        <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                            free tutorial
-                            <i class="fas fa-graduation-cap ml-2"></i>
-                        </a>
                     </div>
                     <!-- Content -->
 
@@ -283,7 +238,7 @@
     <div class="container">
 
         <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+        <nav style="background-color: #2196f3 !important;" class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 {{ $subCategories != null ? 'mb-2' : 'mb-5'}} ">
 
             <!-- Navbar brand -->
             <span class="navbar-brand">Categories:</span>
@@ -310,9 +265,12 @@
                 </ul>
                 <!-- Links -->
 
-                <form class="form-inline">
+                <form action="{{ route('showSearchProduct') }}" method="POST" class="form-inline">
+                    @csrf
                     <div class="md-form my-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <input type="hidden" name="category" value="{{ $currentCategory }}">
+                        <input type="hidden" name="subCategory" value="{{ $currentSubCategory }}">
+                        <input name="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     </div>
                 </form>
             </div>
@@ -321,8 +279,8 @@
         <!--/.Navbar-->
 
         <!--Sub Navbar-->
-        @if($subCategories != null)
-        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mb-5">
+        @if($subCategories != null && !$subCategories->isEmpty())
+        <nav style="background-color: #2196f3 !important;" class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mb-5">
 
             <!-- Navbar brand -->
             <span class="navbar-brand">Sub Categories:</span>
@@ -360,11 +318,11 @@
                     <div class="col-lg-3 col-md-6 mb-4">
 
                             <!--Card-->
-                            <div class="card">
+                            <div class="card" style="width: 100%;height: 25vw;object-fit: cover;">
 
                                 <!--Card image-->
                                 <div class="view overlay">
-                                    <img src="{{ asset('storage/'.$product->images()->first()->path)}}" class="{{ $product->title }}"
+                                    <img class="img-fluid" src="{{ asset('storage/'.$product->images()->first()->path)}}"
                                          alt="{{ $product->title }}">
                                     <a href="{{ route('showProduct', ['product' => $product->id]) }}">
                                         <div class="mask rgba-white-slight"></div>
@@ -385,7 +343,7 @@
                                     </h5>
 
                                     <h4 class="font-weight-bold blue-text">
-                                        <strong>{{ $product->selling_price }}$</strong>
+                                        <strong>{{ $product->discount_price }}$</strong>
                                     </h4>
 
                                 </div>
@@ -413,57 +371,6 @@
 
 <!--Footer-->
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <!--Call to action-->
-    <div class="pt-4">
-        <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-           role="button">Download MDB
-            <i class="fas fa-download ml-2"></i>
-        </a>
-        <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-            free tutorial
-            <i class="fas fa-graduation-cap ml-2"></i>
-        </a>
-    </div>
-    <!--/.Call to action-->
-
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-        <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-        </a>
-
-        <a href="https://twitter.com/MDBootstrap" target="_blank">
-            <i class="fab fa-twitter mr-3"></i>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-            <i class="fab fa-youtube mr-3"></i>
-        </a>
-
-        <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-            <i class="fab fa-google-plus-g mr-3"></i>
-        </a>
-
-        <a href="https://dribbble.com/mdbootstrap" target="_blank">
-            <i class="fab fa-dribbble mr-3"></i>
-        </a>
-
-        <a href="https://pinterest.com/mdbootstrap" target="_blank">
-            <i class="fab fa-pinterest mr-3"></i>
-        </a>
-
-        <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-            <i class="fab fa-github mr-3"></i>
-        </a>
-
-        <a href="http://codepen.io/mdbootstrap/" target="_blank">
-            <i class="fab fa-codepen mr-3"></i>
-        </a>
-    </div>
-    <!-- Social icons -->
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
