@@ -129,7 +129,7 @@
                 @foreach($orderItems as $orderItem)
                     <tr>
                         <td>{{ $orderItem->id }}</td>
-                        <td><img style="width: 30%;height: 30%" src="{{ '/storage/'.App\Models\Product::find($orderItem->product_id)->images()->first()->path }}" alt="{{ App\Models\Product::find($orderItem->product_id)->name }}"></td>
+                        <td><img style="width: 200px;height: 200px" src="{{ '/storage/'.App\Models\Product::find($orderItem->product_id)->images()->first()->path }}" alt="{{ App\Models\Product::find($orderItem->product_id)->name }}"></td>
                         <td>{{ App\Models\Product::find($orderItem->product_id)->title }}</td>
                         <td>{{ App\Models\Product::find($orderItem->product_id)->id }}</td>
                         <td>{{ $orderItem->color }}</td>
