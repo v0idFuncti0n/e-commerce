@@ -1,148 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="fix: side bar photo profile css fix">
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/datatables-select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/datatables-select.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/datatables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/datatables.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/directives.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/directives.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/flag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/flag.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/rating.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/rating.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/zmd.hierarchical-display.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/addons/zmd.hierarchical-display.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/mdb.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/mdb.lite.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/mdb.lite.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/mdb.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/modules/animations-extended.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/modules/animations-extended.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/css/style.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Bold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Light.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Light.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Medium.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Medium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Thin.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Thin.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/font/roboto/Roboto-Thin.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/flags.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/lightbox/default-skin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/lightbox/default-skin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/lightbox/preloader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/overlays/09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/sample.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/svg/arrow_left.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/svg/arrow_right.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/img/svg/flags.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/datatables-select.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/datatables-select.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/datatables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/datatables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/imagesloaded.pkgd.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/jquery.zmd.hierarchical-display.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/jquery.zmd.hierarchical-display.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/masonry.pkgd.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/progressBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/progressBar.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/rating.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/addons/rating.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/jquery-3.4.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/mdb.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/mdb.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/bs-custom-file-input.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/default-file-input.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/enhanced-modals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/forms-free.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/jquery.easing.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/scrolling-navbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/treeview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/velocity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/velocity.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/waves.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/modules/wow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/js/popper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/_custom-skin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/_custom-styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/_custom-variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/addons/_datatables-select.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/addons/_datatables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/addons/_directives.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/addons/_flags.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/addons/_hierarchical-display.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/addons/_rating.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_colors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_global.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_helpers.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_masks.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_typography.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/_waves.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/bootstrap/_functions.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/bootstrap/_rfs.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/core/bootstrap/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_animations-basic.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_badges.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_cards.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_carousels.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_depreciated.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_dropdowns.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_footers.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_forms.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_input-group.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_list-group.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_loader.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_modals.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_msc.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_navbars.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_pagination.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_steppers.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_switch.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_tables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/_treeview.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/modules/animations-extended/_module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/free/modules/animations-extended/animations-extended.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/mdb.lite.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/mdb.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/e-commerce/scss/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/e-commerce/checkout-page.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/e-commerce/home-page.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/e-commerce/product-page.blade.php" afterDir="false" />
+    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="logout, manage profile, profile photo are working in admin dashboard">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_29_2021_5_33_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_29_2021_5_33_PM__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CategorySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master-mini.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master-mini.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/e-commerce/home-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/e-commerce/home-page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,6 +24,13 @@
     <execution>
       <executable path="composer" />
     </execution>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+      </set>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -284,6 +160,13 @@
       <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/bumbummen99/shoppingcart" />
+      <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
     </include_path>
   </component>
   <component name="ProjectId" id="1qR7oWaRpN5p5O8NsmEXW6DTcZH" />
@@ -301,20 +184,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/jetstream.php" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/config/jetstream.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\MSI\PhpstormProjects\e-commerce" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MSI\PhpstormProjects\e-commerce\resources\views\e-commerce" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -349,10 +224,7 @@
       <workItem from="1621538833062" duration="629000" />
       <workItem from="1621540677558" duration="6642000" />
       <workItem from="1621603438557" duration="9179000" />
-      <workItem from="1622305688467" duration="1167000" />
-      <workItem from="1622306934395" duration="448000" />
-      <workItem from="1624313702076" duration="9000000" />
-      <workItem from="1624396549938" duration="6302000" />
+      <workItem from="1626041165649" duration="3446000" />
     </task>
     <task id="LOCAL-00001" summary="Added multi auth system using roles ( admin , client ).">
       <created>1618967940515</created>
@@ -375,28 +247,7 @@
       <option name="project" value="LOCAL" />
       <updated>1620009863626</updated>
     </task>
-    <task id="LOCAL-00004" summary="fix: profile images working">
-      <created>1624314737379</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1624314737379</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fix: profile images working">
-      <created>1624314808159</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1624314808159</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fix: side bar photo profile css fix">
-      <created>1624315053849</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1624315053849</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,9 +301,7 @@
     <MESSAGE value="Error : Call to undefined function active_class() needs tobe fixed" />
     <MESSAGE value="Error : Call to undefined function active_class() needs to be fixed" />
     <MESSAGE value="coupon &#10;prblm message:target class doesn't exist" />
-    <MESSAGE value="fix: profile images working" />
-    <MESSAGE value="fix: side bar photo profile css fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: side bar photo profile css fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="coupon &#10;prblm message:target class doesn't exist" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

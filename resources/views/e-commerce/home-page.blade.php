@@ -54,7 +54,7 @@
 
         <!-- Brand -->
         <a class="navbar-brand waves-effect">
-            <strong class="blue-text">Ecommerce</strong>
+            <strong class="blue-text">Ecolothing</strong>
         </a>
 
         <!-- Collapse -->
@@ -96,6 +96,7 @@
                                 @role('admin')
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                                 @endrole
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('profile.show')}}">Edit Profile</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('show.orders')}}">My Orders</a></li>
                                 <li role="presentation" class="divider"></li>
                                 <li role="presentation">
@@ -149,7 +150,7 @@
                     <!-- Content -->
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">
-                            <strong>E-commerce</strong>
+                            <strong>E-clothing</strong>
                         </h1>
 
                         <p>
@@ -175,7 +176,7 @@
                     <!-- Content -->
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">
-                            <strong>E-commerce</strong>
+                            <strong>E-clothing</strong>
                         </h1>
 
                         <p>
@@ -201,7 +202,7 @@
                     <!-- Content -->
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">
-                            <strong>E-commerce</strong>
+                            <strong>E-clothing</strong>
                         </h1>
 
                         <p>
