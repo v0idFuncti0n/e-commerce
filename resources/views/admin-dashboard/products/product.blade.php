@@ -30,6 +30,7 @@
                             <th> Category</th>
                             <th> Quantity</th>
                             <th> Selling Price</th>
+                            <th> Discount Price</th>
                             <th> Status</th>
                             <th> Action</th>
                         </tr>
@@ -55,7 +56,10 @@
                                     {{ $product->quantity }}
                                 </td>
                                 <td>
-                                    {{ $product->selling_price }}
+                                    {{ $product->selling_price }}$
+                                </td>
+                                <td>
+                                    {{ $product->discount_price }}$
                                 </td>
                                 <td>
                                     @if($product->status == 1)

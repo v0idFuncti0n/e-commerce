@@ -59,7 +59,7 @@
                 @auth
                     <li class="mt-2 nav-item dropdown">
                         <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <img class="mx-auto rounded-circle" style="height: 20%; width:20%"
+                            <img class="mx-auto rounded-circle" style="width: 2rem;height: 2rem"
                                  src="{{ Auth::user()->profile_photo_url }}">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
@@ -107,7 +107,7 @@
         <div class="p-3 mb-2 bg-info text-white">Last Name: {{ $order->lastName }}</div>
         <div class="p-3 mb-2 bg-info text-white">Email: {{ $order->email }}</div>
         <div class="p-3 mb-2 bg-info text-white">Phone: {{ $order->phone }}</div>
-        <div class="p-3 mb-2 bg-info text-white">Address: {{ $order->adress }}</div>
+        <div class="p-3 mb-2 bg-info text-white">Address: {{ $order->address }}</div>
         <div class="p-3 mb-2 bg-info text-white">Zip: {{ $order->zip }}</div>
         <div class="p-3 mb-2 bg-info text-white">Total: <span style="color: black"><strong>{{ $order->total }}$</strong></span></div>
         <div class="p-3 mb-2 bg-info text-white">Quantity: {{ $order->quantity }}</div>

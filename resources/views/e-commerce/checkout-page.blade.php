@@ -14,6 +14,7 @@
     <link href="{{ asset('e-commerce/css/mdb.min.css') }}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="{{ asset('e-commerce/css/style.min.css') }}" rel="stylesheet">
+    {!! Html::style('/css/toastr.css') !!}
     <style>
         /**
        * The CSS shown here will not be introduced in the Quickstart guide, but shows
@@ -93,7 +94,7 @@
                 @auth
                     <li class="mt-2 nav-item dropdown">
                         <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <img class="mx-auto rounded-circle" style="height: 20%; width:20%"
+                            <img class="mx-auto rounded-circle" style="width: 2rem;height: 2rem"
                                  src="{{ Auth::user()->profile_photo_url }}">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
@@ -367,10 +368,12 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('e-commerce/js/mdb.min.js') }}"></script>
 <!-- Initializations -->
+{!! Html::script('assets/js/toastr.min.js') !!}
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+    toastr.options.progressBar = true;
     var stripe = Stripe(
         'pk_test_51J6zCZDG2r86Ky5V5h9bMA7QrCjYkvQsNLLjGRr1u580wnQg7Zs6VeUkKVsh5K4HBK4ht6IuMgHOwLaGsalcxWaw00dI6jRtGA'
     );
@@ -457,11 +460,11 @@
             },
             url: "/product/apply-coupon",
             success: function (data) {
-                console.log(data);
+                toastr.success("Coupon ha been applied");
                 location.reload();
             },
-            error: function (data) {
-                console.log(data);
+            error: function (data,reponse) {
+                toastr.error(data.responseJSON.error);
             }
         });
     }

@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function showDashboard(){
         $total = (int)Order::all()->sum('total');
         $orders = Order::where('shipped',0)->count();
-        $sales = OrderItem::count();
+        $sales = OrderItem::all()->sum('quantity');
         $clients = DB::table('model_has_roles')->where('role_id', 2)->count();
         $now = Carbon::now();
         $weekStartDate = $now->startOfWeek()->format('Y-m-d H:i');

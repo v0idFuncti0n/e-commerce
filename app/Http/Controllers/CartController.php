@@ -63,7 +63,11 @@ class CartController extends Controller
                         'coupon' => $coupon->coupon,
                         'discount' => $coupon->discount,
                     ]);
+                }else{
+                    return response()->json(['error'=>'This coupon is no longer valid'], 404);
                 }
+            }else{
+                return response()->json(['error'=>'This coupon does not exist'], 404);
             }
             return response()->json(['success' => 200]);
         }

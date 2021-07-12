@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="logout, manage profile, profile photo are working in admin dashboard">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_29_2021_5_33_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_29_2021_5_33_PM__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="7db81409-dab7-40e8-9602-da9c5fc01eee" name="Default Changelist" comment="fix : notification&#10;add: export invoice pdf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master-mini.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master-mini.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/products/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/products/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/e-commerce/checkout-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/e-commerce/checkout-page.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/e-commerce/home-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/e-commerce/home-page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/e-commerce/order-items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/e-commerce/order-items.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/e-commerce/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/e-commerce/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/e-commerce/product-page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/e-commerce/product-page.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +23,6 @@
     <execution>
       <executable path="composer" />
     </execution>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -184,12 +176,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/jetstream.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/config/jetstream.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MSI\PhpstormProjects\e-commerce" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MSI\PhpstormProjects\e-commerce\resources\views\admin-dashboard\orders" />
+      <recent name="C:\Users\MSI\PhpstormProjects\e-commerce\resources\views\e-commerce" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -224,7 +225,23 @@
       <workItem from="1621538833062" duration="629000" />
       <workItem from="1621540677558" duration="6642000" />
       <workItem from="1621603438557" duration="9179000" />
-      <workItem from="1626041165649" duration="3446000" />
+      <workItem from="1622305688467" duration="1167000" />
+      <workItem from="1622306934395" duration="448000" />
+      <workItem from="1624313702076" duration="9000000" />
+      <workItem from="1624396549938" duration="7393000" />
+      <workItem from="1624577631732" duration="1194000" />
+      <workItem from="1624735095286" duration="3776000" />
+      <workItem from="1624741447247" duration="6980000" />
+      <workItem from="1624804434323" duration="9387000" />
+      <workItem from="1624818428796" duration="6386000" />
+      <workItem from="1625262276314" duration="12037000" />
+      <workItem from="1625924884377" duration="8626000" />
+      <workItem from="1625947074796" duration="26668000" />
+      <workItem from="1625980010511" duration="9013000" />
+      <workItem from="1626007248181" duration="177000" />
+      <workItem from="1626011678900" duration="13829000" />
+      <workItem from="1626094655707" duration="1783000" />
+      <workItem from="1626099647245" duration="9267000" />
     </task>
     <task id="LOCAL-00001" summary="Added multi auth system using roles ( admin , client ).">
       <created>1618967940515</created>
@@ -247,7 +264,84 @@
       <option name="project" value="LOCAL" />
       <updated>1620009863626</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix: profile images working">
+      <created>1624314737379</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1624314737379</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix: profile images working">
+      <created>1624314808159</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1624314808159</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix: side bar photo profile css fix">
+      <created>1624315053849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1624315053849</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add: show products">
+      <created>1624406454936</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1624406454936</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add: show products">
+      <created>1624735872647</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1624735872647</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add: stripe payment getaway">
+      <created>1624815525632</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1624815525632</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add: login in home">
+      <created>1624842146390</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1624842146390</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add: orderManagement">
+      <created>1626007346102</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1626007346102</updated>
+    </task>
+    <task id="LOCAL-00012" summary="push: StripeController.php">
+      <created>1626011736356</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1626011736356</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix : order item photos size">
+      <created>1626013003951</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1626013003951</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix : notification&#10;add: export invoice pdf">
+      <created>1626025999280</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1626025999280</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +395,16 @@
     <MESSAGE value="Error : Call to undefined function active_class() needs tobe fixed" />
     <MESSAGE value="Error : Call to undefined function active_class() needs to be fixed" />
     <MESSAGE value="coupon &#10;prblm message:target class doesn't exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="coupon &#10;prblm message:target class doesn't exist" />
+    <MESSAGE value="fix: profile images working" />
+    <MESSAGE value="fix: side bar photo profile css fix" />
+    <MESSAGE value="add: show products" />
+    <MESSAGE value="add: stripe payment getaway" />
+    <MESSAGE value="add: login in home" />
+    <MESSAGE value="add: orderManagement" />
+    <MESSAGE value="push: StripeController.php" />
+    <MESSAGE value="fix : order item photos size" />
+    <MESSAGE value="fix : notification&#10;add: export invoice pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : notification&#10;add: export invoice pdf" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

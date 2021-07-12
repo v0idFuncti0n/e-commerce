@@ -59,7 +59,7 @@
                 @auth
                     <li class="mt-2 nav-item dropdown">
                         <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <img class="mx-auto rounded-circle" style="height: 20%; width:20%"
+                            <img class="mx-auto rounded-circle" style="width: 2rem;height: 2rem"
                                  src="{{ Auth::user()->profile_photo_url }}">
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
@@ -110,12 +110,12 @@
             <!--Grid column-->
             <div class="col-md-6 mb-4">
                 <div>
-                    <img id="main-image" style="width: 100%;height: 25vw;object-fit: cover;"
+                    <img id="main-image" style="width: 100%;height: auto;object-fit: cover;"
                          src="{{ asset('storage/'.$product->images()->first()->path)}}" class="img-fluid" alt="">
                 </div>
                 <div class="mt-5">
                     @foreach($product->images as $image)
-                        <img class="ml-2 mr-2" style="width: 40px;height: 40px;border: 1px solid black;"
+                        <img class="img-fluid ml-2 mr-2" style="width: 40px;height: 40px;border: 1px solid black;"
                              src="{{asset('storage/'.$image->path)}}" alt="" onclick="setMainImage(this.src)">
                     @endforeach
                 </div>
@@ -253,7 +253,6 @@
             error: function (data){
                 toastr.error('There was an error try again later');
             }
-
         });
     }
 

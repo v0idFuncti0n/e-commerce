@@ -16,7 +16,7 @@
           <div class="float-right">
             <p class="mb-0 text-right">Total Revenue</p>
             <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">{{ number_format($total, 0, '.', ',') }}$</h3>
+              <h3 class="font-weight-medium text-right mb-0">{{ number_format($total, 2, '.', ',') }}$</h3>
             </div>
           </div>
         </div>
@@ -141,8 +141,8 @@
                           ticks: {
                               beginAtZero: true,
                               min: 0,
-                              max: 5000,
-                              stepSize: 500
+                              max: Math.max.apply(this, data.datasets[0].data) + 100,
+                              stepSize: 100
                           }
                       }
                   ],

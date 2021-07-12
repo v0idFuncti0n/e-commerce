@@ -88,7 +88,7 @@
                     @auth
                     <li class="mt-2 nav-item dropdown">
                             <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                                <img class="mx-auto rounded-circle" style="height: 20%; width:20%" src="{{ Auth::user()->profile_photo_url }}">
+                                <img class="img-xs rounded-circle" style="width: 2rem;height: 2rem" src="{{ Auth::user()->profile_photo_url }}">
                                 {{ Auth::user()->name }}
                                 <span class="caret"></span>
                             </a>
@@ -320,7 +320,7 @@
                     <div class="col-lg-3 col-md-6 mb-4">
 
                             <!--Card-->
-                            <div class="card" style="width: 100%;height: 25vw;object-fit: cover;">
+                            <div class="card" style="width: 100%;height: 400px;object-fit: cover;">
 
                                 <!--Card image-->
                                 <div class="view overlay">
