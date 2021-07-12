@@ -172,6 +172,10 @@
             "order": [[ 1, "desc" ]]
         });
     });
+
+    function logout() {
+        $('#logout-form').submit();
+    }
 </script>
 </body>
 
