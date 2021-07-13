@@ -19,6 +19,13 @@ class StripeController extends Controller
             return redirect()->to('login');
         }
 
+        if(Cart::count() < 1){
+            return redirect()->route('home')->with([
+                'message' => 'The cart is empty',
+                'alert-type' => 'error'
+            ]);
+        }
+
         \Stripe\Stripe::setApiKey(
 
             'sk_test_51J6zCZDG2r86Ky5Vy7Q1ucWuUZJmihYNSk3oHCel6WC6dNq9FYYQi276nuxarRVsFo68Tz8qep59cp4pEIAlObWu00S7j4Z5KJ'
