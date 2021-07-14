@@ -45,7 +45,7 @@
     </style>
 </head>
 <body>
-<h1>E-commerce</h1>
+<h1>E-clothing</h1>
 <h2><u>INVOICE</u></h2>
 
 <table style="margin-bottom: 5rem" class="darkTable">
