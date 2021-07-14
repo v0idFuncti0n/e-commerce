@@ -69,6 +69,7 @@
                             <li role="presentation"><a role="menuitem" tabindex="-1"
                                                        href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
                             @endrole
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('profile.show')}}">Edit Profile</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{route('show.orders')}}">My Orders</a></li>
                             </li>
                             <li role="presentation" class="divider"></li>
